@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ronin Toys - We Take Play Seriously</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        
+                        'deep-teal': '#2D5A5A',
+                        'warm-ochre': '#CC8E35', 
+                        'electric-coral': '#FF6B6B',
+                        'sage-green': '#87A96B',
+                        'warm-cream': '#FFF8E7',
+                        'soft-gray': '#6B7280',
+                       
+                        'e-blue' : '#4A9EFF',
+                        'teal-feels' : '#1fa0b6',
+                        'purple' :  '#7850a9',
+                       
+                        'bluey-blue': '#4A90E2',
+                        'bluey-yellow': '#F4D03F', 
+                        'bluey-orange': '#FF8C42',
+                        'bluey-green': '#7CB342',
+                        'warm-cream': '#FFF8E7',
+                        'soft-gray': '#6B7280',
+
+
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&display=swap');
+        body { font-family: 'Space Grotesk', sans-serif; }
+        
+        .float-dance {
+            animation: float-dance 3s ease-in-out infinite;
+        }
+        
+        @keyframes float-dance {
+            0%, 100% { transform: translateY(0px) rotateZ(0deg); }
+            33% { transform: translateY(-10px) rotateZ(2deg); }
+            66% { transform: translateY(5px) rotateZ(-1deg); }
+        }
+        
+        .bounce-play {
+            animation: bounce-play 2s ease-in-out infinite;
+        }
+        
+        @keyframes bounce-play {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.05) rotate(180deg); }
+        }
+        
+        .wiggle-wild {
+            animation: wiggle-wild 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes wiggle-wild {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(3deg); }
+            75% { transform: rotate(-3deg); }
+        }
+        
+        .clickable:hover {
+            cursor: grab;
+        }
+        
+        .clickable:active {
+            cursor: grabbing;
+            transform: scale(0.95);
+        }
+        
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-warm-cream text-gray-800 overflow-x-hidden">
+    <!-- Nav -->
+    <nav class="bg-deep-teal sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-center h-16">
+                <h1 class="text-white font-black text-2xl cursor-pointer" onclick="showPage('home')">Ronin Toys</h1>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#" onclick="showPage('home')" class="text-white hover:text-warm-ochre font-medium">Home</a>
+                    <a href="#" onclick="showPage('about')" class="text-white hover:text-warm-ochre font-medium">About Ruby</a>
+                    <a href="#" onclick="showPage('cats')" class="text-white hover:text-warm-ochre font-medium">The Research Team</a>
+                    <a href="#" onclick="showPage('interest')" class="text-white hover:text-warm-ochre font-medium">Get Notified</a>
+                    <a href="https://instagram.com/theronintoymaker" target="_blank" class="text-white hover:text-warm-ochre font-medium underline">Follow Us!</a>
+                </div>
+                <button class="bg-deep-teal text-white px-4 py-2 rounded-full font-bold hover:bg-teal-700 transition-all transform hover:scale-110" onclick="showPage('interest')">
+                    Get Notified
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+        <!-- Hero -->
+        <section class="min-h-screen bg-warm-ochre flex items-center relative overflow-hidden">
+            <!-- Floating elements -->
+            <div class="absolute top-20 left-20 w-16 h-16 bg-deep-teal rounded-full float-dance opacity-70"></div>
+            <div class="absolute top-40 right-32 w-12 h-12 bg-warm-cream rounded-full float-dance opacity-60" style="animation-delay: 1s;"></div>
+            <div class="absolute bottom-32 left-1/4 w-20 h-20 bg-purple rounded-full float-dance opacity-50" style="animation-delay: 2s;"></div>
+            
+            <div class="max-w-7xl mx-auto px-6 py-20 relative z-10">
+                <div class="text-center space-y-12">
+                    <h2 class="text-7xl md:text-8xl font-black text-gray-800 leading-none">
+                        We take
+                        <br>
+                        <span class="text-teal-feels wiggle-wild inline-block">play</span>
+                        <br>
+                        seriously
+                    </h2>
+                    
+                    <div class="max-w-2xl mx-auto space-y-6">
+                        <p class="text-2xl font-bold text-gray-700">
+                            Because the world's full enough of serious things that aren't any fun
+                        </p>
+                        <p class="text-xl text-gray-600 font-medium">
+                            We make toys for cats, humans, and anyone else who believes that the best moments happen when you're too busy having fun to worry about whether you're doing it right
+                        </p>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Products -->
+        <section class="bg-warm-cream py-20">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-6xl font-black text-gray-800 mb-4 wiggle-wild">The Chaos Collection</h2>
+                    <p class="text-xl text-gray-600 font-medium">Designed by cats, for cats (and their humans)</p>
+                </div>
+                
+                <!-- Product Grid -->
+                <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                    
+                    <!-- Product 1 -->
+                    <div class="bg-white rounded-3xl p-8 transform hover:scale-105 transition-all duration-500 hover:rotate-1 clickable shadow-lg" onclick="expandToy('reelin')">
+                        <div class="aspect-square bg-deep-teal rounded-2xl mb-6 flex items-center justify-center relative overflow-hidden group">
+                            <div class="text-white text-6xl bounce-play">🎣</div>
+                            <div class="absolute inset-0 bg-gray-800 opacity-0 group-hover:opacity-20 transition-opacity"></div>
+                            <div class="absolute bottom-4 left-4 bg-white text-gray-800 px-3 py-1 rounded-full text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                ▶ Cooperative fishing
+                            </div>
+                        </div>
+                        <h3 class="text-3xl font-black text-gray-800 mb-2">Reelin</h3>
+                        <p class="text-gray-600 font-medium mb-4">An anthropological study in cooperative chaos</p>
+                        <div class="text-3xl font-black text-electric-coral">₹350</div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="bg-white rounded-3xl p-8 transform hover:scale-105 transition-all duration-500 hover:-rotate-1 clickable shadow-lg" onclick="expandToy('rover')">
+                        <div class="aspect-square bg-deep-teal rounded-2xl mb-6 flex items-center justify-center relative overflow-hidden group">
+                            <div class="text-white text-6xl float-dance">🭀</div>
+                            <div class="absolute inset-0 bg-gray-800 opacity-0 group-hover:opacity-20 transition-opacity"></div>
+                            <div class="absolute bottom-4 left-4 bg-white text-gray-800 px-3 py-1 rounded-full text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                ▶ Precision hunting
+                            </div>
+                        </div>
+                        <h3 class="text-3xl font-black text-gray-800 mb-2">Rover</h3>
+                        <p class="text-gray-600 font-medium mb-4">For quantum hunting experiments</p>
+                        <div class="text-3xl font-black text-deep-teal">₹3,000</div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="bg-white rounded-3xl p-8 transform hover:scale-105 transition-all duration-500 hover:rotate-1 clickable shadow-lg" onclick="expandToy('rollin')">
+                        <div class="aspect-square bg-sage-green rounded-2xl mb-6 flex items-center justify-center relative overflow-hidden group">
+                            <div class="text-white text-6xl bounce-play">⚽</div>
+                            <div class="absolute inset-0 bg-gray-800 opacity-0 group-hover:opacity-20 transition-opacity"></div>
+                            <div class="absolute bottom-4 left-4 bg-white text-gray-800 px-3 py-1 rounded-full text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                ▶ Physics having arguments
+                            </div>
+                        </div>
+                        <h3 class="text-3xl font-black text-gray-800 mb-2">Rollin' Ronin</h3>
+                        <p class="text-gray-600 font-medium mb-4">For sound-activated velocity studies</p>
+                        <div class="text-3xl font-black text-deep-teal">₹1,499</div>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="bg-white rounded-3xl p-8 transform hover:scale-105 transition-all duration-500 hover:-rotate-1 clickable shadow-lg" onclick="expandToy('chatter')">
+                        <div class="aspect-square bg-gray-700 rounded-2xl mb-6 flex items-center justify-center relative overflow-hidden group">
+                            <div class="text-white text-6xl wiggle-wild">🗣️</div>
+                            <div class="absolute inset-0 bg-deep-teal opacity-0 group-hover:opacity-20 transition-opacity"></div>
+                            <div class="absolute bottom-4 left-4 bg-white text-gray-800 px-3 py-1 rounded-full text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                ▶ Actual conversations
+                            </div>
+                        </div>
+                        <h3 class="text-3xl font-black text-gray-800 mb-2">ChatterBox</h3>
+                        <p class="text-gray-600 font-medium mb-4">For interspecies dialogue research</p>
+                        <div class="text-3xl font-black text-deep-teal">₹2,200</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Methodology -->
+        <section class="bg-sage-green py-20">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-6xl font-black text-white mb-6">Our Scientific Approach</h2>
+                    <p class="text-xl text-white font-medium">Rigorous methodology for maximum chaos</p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-3xl p-8 shadow-lg text-center">
+                        <div class="text-4xl mb-4">🔬</div>
+                        <h3 class="text-2xl font-black text-gray-800 mb-4">Step 1: Observe</h3>
+                        <p class="text-gray-600 font-medium">Watch cats being magnificently themselves. Take extensive notes on optimal chaos conditions.</p>
+                    </div>
+                    
+                    <div class="bg-white rounded-3xl p-8 shadow-lg text-center">
+                        <div class="text-4xl mb-4">💡</div>
+                        <h3 class="text-2xl font-black text-gray-800 mb-4">Step 2: Hypothesize</h3>
+                        <p class="text-gray-600 font-medium">Ask the essential question: "What if this, but MORE?" Document all theories, no matter how ridiculous.</p>
+                    </div>
+                    
+                    <div class="bg-white rounded-3xl p-8 shadow-lg text-center">
+                        <div class="text-4xl mb-4">🔧</div>
+                        <h3 class="text-2xl font-black text-gray-800 mb-4">Step 3: Build</h3>
+                        <p class="text-gray-600 font-medium">Create prototypes using the finest materials and questionable engineering decisions.</p>
+                    </div>
+                    
+                    <div class="bg-white rounded-3xl p-8 shadow-lg text-center">
+                        <div class="text-4xl mb-4">🐱</div>
+                        <h3 class="text-2xl font-black text-gray-800 mb-4">Step 4: Test</h3>
+                        <p class="text-gray-600 font-medium">Present to focus group (the cats). Await verdict via strategic destruction or dignified approval.</p>
+                    </div>
+                    
+                    <div class="bg-white rounded-3xl p-8 shadow-lg text-center">
+                        <div class="text-4xl mb-4">🔄</div>
+                        <h3 class="text-2xl font-black text-gray-800 mb-4">Step 5: Iterate</h3>
+                        <p class="text-gray-600 font-medium">Adjust based on feline feedback until achieving Perfect Chaos™ certification.</p>
+                    </div>
+                    
+                    <div class="bg-white rounded-3xl p-8 shadow-lg text-center">
+                        <div class="text-4xl mb-4">🎉</div>
+                        <h3 class="text-2xl font-black text-gray-800 mb-4">Step 6: Release</h3>
+                        <p class="text-gray-600 font-medium">Share with the world, then start the whole beautiful cycle all over again.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events -->
+        <section class="bg-deep-teal py-20">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-6xl font-black text-white mb-6">Catch us in the wild</h2>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-3xl p-8 shadow-lg">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-4 h-4 bg-electric-coral rounded-full bounce-play"></div>
+                            <span class="text-electric-coral font-black text-sm uppercase">Next Stop</span>
+                        </div>
+                        <h3 class="text-3xl font-black text-gray-800 mb-2">India FOSS</h3>
+                        <p class="text-gray-700 font-bold mb-2">September 20-21</p>
+                        <p class="text-gray-600 mb-6">NIMHANS, Bengaluru</p>
+                        <button class="bg-sage-green text-white px-6 py-3 rounded-full font-bold hover:bg-green-600 transition-all transform hover:scale-105">
+                            Find us there →
+                        </button>
+                    </div>
+
+                    <div class="bg-white rounded-3xl p-8 shadow-lg">
+                        <h3 class="text-3xl font-black text-gray-800 mb-6">Coming Soon</h3>
+                        <div class="space-y-3">
+                            <p class="text-gray-700 font-bold">HRI 2025 • Melbourne</p>
+                            <p class="text-gray-700 font-bold">Green Schools • Orlando</p>
+                            <p class="text-gray-700 font-bold">IEEE GreenTech • Denver</p>
+                        </div>
+                        <p class="text-deep-teal text-sm mt-6 font-medium">
+                            Wherever robots meet sustainability
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Simple CTA -->
+        <section class="bg-deep-teal py-20">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h2 class="text-6xl font-black text-white mb-8 float-dance">
+                    Ready?
+                </h2>
+                <div class="space-y-4">
+                    <button class="bg-warm-ochre text-white px-12 py-6 rounded-full font-black text-2xl hover:bg-yellow-600 transition-all transform hover:scale-110 clickable" onclick="showPage('interest')">
+                        Let's Play →
+                    </button>
+                    <p class="text-white text-lg font-medium">
+                        Follow our journey <a href="https://instagram.com/theronintoymaker" target="_blank" class="underline hover:text-warm-ochre">@theronintoymaker</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ABOUT RUBY PAGE -->
+    <div id="about" class="page">
+        <section class="min-h-screen bg-warm-cream py-20">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h1 class="text-6xl font-black text-gray-800 mb-8">About Ruby</h1>
+                    <p class="text-2xl text-gray-600 font-medium">The human behind the chaos</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-8">
+                        <div class="bg-white rounded-3xl p-8 shadow-lg">
+                            <h2 class="text-3xl font-black text-gray-800 mb-6">The Story So Far</h2>
+                            <div class="space-y-4 text-gray-600 font-medium leading-relaxed">
+                                <p>
+                                    It started with three cats who had very specific opinions about their entertainment. 
+                                    Gwilo wanted something cooperative. Zelda demanded something worthy of her royal status. 
+                                    Crawrdd needed chaos that matched his sound-activated energy.
+                                </p>
+                                <p>
+                                    Traditional toys weren't cutting it. Store-bought options either bored them instantly 
+                                    or lasted about as long as my attention span during a conference call.
+                                </p>
+                                <p>
+                                    So I started making things. Not because I had some grand vision of disrupting 
+                                    the pet industry, but because three very persuasive cats made it clear that 
+                                    their current entertainment options were inadequate.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="bg-deep-teal rounded-3xl p-8 shadow-lg">
+                            <h3 class="text-2xl font-black text-white mb-4">The Philosophy</h3>
+                            <p class="text-white font-medium leading-relaxed">
+                                "Play is essential and effortless" isn't just a tagline—it's what I learned watching my cats. 
+                                They don't need instructions or learning objectives. They need things that respond to their 
+                                natural instincts and then get out of the way.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="bg-white rounded-3xl p-8 shadow-lg text-center">
+                            <div class="w-32 h-32 bg-warm-ochre rounded-full mx-auto mb-6 flex items-center justify-center">
+                                <div class="text-5xl">👤</div>
+                            </div>
+                            <h3 class="text-2xl font-black text-gray-800 mb-2">Ruby</h3>
+                            <p class="text-gray-600 font-medium mb-4">aka @ruphilka</p>
+                            <p class="text-gray-600 font-medium">
+                                Professional cat servant, occasional human
+                            </p>
+                        </div>
+
+                        <div class="bg-sage-green rounded-3xl p-8 shadow-lg">
+                            <h3 class="text-2xl font-black text-white mb-4">The Mission</h3>
+                            <p class="text-white font-medium leading-relaxed">
+                                Create toys that break beautifully, engage naturally, and respect the intelligence 
+                                of both animals and their humans. No flashing lights, no forced "learning outcomes"—just 
+                                thoughtful design that lets play be play.
+                            </p>
+                        </div>
+
+                        <div class="text-center">
+                            <a href="https://instagram.com/theronintoymaker" target="_blank" class="bg-purple text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-purple-700 transition-all transform hover:scale-105 inline-block">
+                                Follow the Journey →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- CATS PAGE -->
+    <div id="cats" class="page">
+        <section class="min-h-screen bg-warm-cream py-20">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h1 class="text-6xl font-black text-gray-800 mb-8">Field Notes from the Research Department</h1>
+                    <p class="text-2xl text-gray-600 font-medium">Our design consultants operate under the assumption that humans are reasonably intelligent but need constant supervision</p>
+                </div>
+
+                <!-- Gwilo -->
+                <div class="mb-20">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div class="bg-white rounded-3xl p-8 shadow-lg border-l-8 border-deep-teal">
+                            <div class="flex items-center mb-6">
+                                <div class="w-20 h-20 bg-deep-teal rounded-full flex items-center justify-center mr-4">
+                                    <div class="text-3xl">🐱</div>
+                                </div>
+                                <div>
+                                    <span class="bg-deep-teal text-white px-3 py-1 rounded-full text-sm font-black uppercase">Cooperative Hunter</span>
+                                </div>
+                            </div>
+                            <h2 class="text-4xl font-black text-gray-800 mb-2">Subject: Gwilo</h2>
+                            <p class="text-gray-600 font-medium mb-6">Age: ~8 Earth Years • Status: Senior Research Fellow in Applied Mischief</p>
+                            <div class="space-y-4 text-gray-600 font-medium">
+                                <p>
+                                    <strong>Primary Research Focus:</strong> Gwilo operates on the revolutionary principle that cooperation 
+                                    between species is not only possible but essential for maximum chaos achievement. Currently investigating 
+                                    the correlation between teamwork and fun.
+                                </p>
+                                <p>
+                                    <strong>Notable Discovery:</strong> Cute aggression as a valid expression of overwhelming affection. 
+                                    Sometimes subjects become so overwhelmed by love that they must attack the object of their affection 
+                                    "just a little bit." Endearing and mildly terrifying.
+                                </p>
+                                <p>
+                                    <strong>Research Philosophy:</strong> "If it doesn't invite participation, what's the point?"
+                                </p>
+                            </div>
+                        </div>
+                        <div class="bg-deep-teal rounded-3xl p-8 shadow-lg">
+                            <h3 class="text-3xl font-black text-white mb-6">Current Project: Reelin</h3>
+                            <div class="space-y-4 text-white font-medium">
+                                <p>
+                                    An organic fishing apparatus developed in collaboration with Gwilo. Made from bamboo that 
+                                    grew up wanting to be a fishing rod, paired with cotton string that has commitment issues.
+                                </p>
+                                <p>
+                                    <strong>Technical Specifications:</strong> Designed to achieve Beautiful Destruction after 
+                                    approximately 50 sessions of quality chaos. Comes with a 3-month warranty because we believe 
+                                    in second chances (and Gwilo believes in third and fourth chances).
+                                </p>
+                                <p class="text-warm-ochre font-bold italic">
+                                    "Finally, a human who understands that playing together is the point." —Gwilo
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Zelda -->
+                <div class="mb-20">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div class="bg-deep-teal rounded-3xl p-8 shadow-lg order-2 md:order-1">
+                            <h3 class="text-3xl font-black text-white mb-6">Current Project: Rover</h3>
+                            <div class="space-y-4 text-white font-medium">
+                                <p>
+                                    A modified micro mouse engineered to Zelda's exacting specifications for live prey simulation. 
+                                    Her research focuses on the precise mathematics of pursuit—the exact angle of approach, 
+                                    the optimal unpredictability ratio, the perfect moment of engagement.
+                                </p>
+                                <p>
+                                    <strong>Research Methodology:</strong> Zelda approaches hunting as high art, demanding nothing 
+                                    less than perfection in every movement pattern. She evaluates each autonomous sequence with 
+                                    the cool detachment of a master critic, dismissing inferior entertainment with elegant disdain.
+                                </p>
+                                <p class="text-warm-ochre font-bold italic">
+                                    "It will suffice. For now." —Zelda (The highest possible endorsement)
+                                </p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-3xl p-8 shadow-lg order-1 md:order-2 border-l-8 border-deep-teal">
+                            <div class="flex items-center mb-6">
+                                <div class="w-20 h-20 bg-deep-teal rounded-full flex items-center justify-center mr-4">
+                                    <div class="text-3xl">👑</div>
+                                </div>
+                                <div>
+                                    <span class="bg-deep-teal text-white px-3 py-1 rounded-full text-sm font-black uppercase">Chief Perfectionist</span>
+                                </div>
+                            </div>
+                            <h2 class="text-4xl font-black text-gray-800 mb-2">Subject: Zelda</h2>
+                            <p class="text-gray-600 font-medium mb-6">Age: 7.5 Earth Years • Status: Senior Research Fellow in Applied Precision</p>
+                            <div class="space-y-4 text-gray-600 font-medium">
+                                <p>
+                                    <strong>Primary Research Focus:</strong> The mathematical perfection of live prey simulation. 
+                                    Zelda studies optimal hunting sequences with the detached precision of a master theorist, 
+                                    demanding nothing less than flawless execution in every movement pattern.
+                                </p>
+                                <p>
+                                    <strong>Research Methodology:</strong> Approaches each hunting scenario as high art, evaluating 
+                                    autonomous prey behavior with cool, professional distance. Dismisses substandard entertainment 
+                                    with elegant indifference, reserving approval only for work that meets her exacting standards.
+                                </p>
+                                <p>
+                                    <strong>Notable Contribution:</strong> Established the principle that nonchalance and perfection 
+                                    are not mutually exclusive—true mastery appears effortless precisely because it is so refined.
+                                </p>
+                                <p>
+                                    <strong>Research Philosophy:</strong> "If it cannot achieve perfection, it has no business existing in my vicinity."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Crawrdd -->
+                <div class="mb-20">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div class="bg-white rounded-3xl p-8 shadow-lg border-l-8 border-sage-green">
+                            <div class="flex items-center mb-6">
+                                <div class="w-20 h-20 bg-sage-green rounded-full flex items-center justify-center mr-4">
+                                    <div class="text-3xl">👁️</div>
+                                </div>
+                                <div>
+                                    <span class="bg-sage-green text-white px-3 py-1 rounded-full text-sm font-black uppercase">Chaos Specialist</span>
+                                </div>
+                            </div>
+                            <h2 class="text-4xl font-black text-gray-800 mb-2">Subject: Crawrdd</h2>
+                            <p class="text-gray-600 font-medium mb-6">Age: 1.9 Earth Years • Status: Mr. Cloud, Velocity Research Fellow</p>
+                            <div class="space-y-4 text-gray-600 font-medium">
+                                <p>
+                                    <strong>Primary Research Focus:</strong> Sound-activated velocity studies. Demonstrates the fascinating 
+                                    phenomenon where contemplative zen-master energy instantly transforms into pure kinetic chaos upon 
+                                    auditory stimulation.
+                                </p>
+                                <p>
+                                    <strong>Current Hypothesis:</strong> The universe contains exactly two states—"dreamy contemplation" 
+                                    and "EVERYTHING IS HAPPENING RIGHT NOW." No middle ground has been observed.
+                                </p>
+                                <p>
+                                    <strong>Notable Contribution to Science:</strong> Proved that puzzle toys are actually meditation 
+                                    devices in disguise. Round eyes that seem to take in everything at once support this theory.
+                                </p>
+                                <p>
+                                    <strong>Research Philosophy:</strong> "Everything is interesting! Wait, what was I doing? Oh right, that thing is MOVING!"
+                                </p>
+                            </div>
+                        </div>
+                        <div class="bg-sage-green rounded-3xl p-8 shadow-lg">
+                            <h3 class="text-3xl font-black text-white mb-6">Current Project: Rollin' Ronin</h3>
+                            <div class="space-y-4 text-white font-medium">
+                                <p>
+                                    A weighted apparatus that creates unpredictable movement patterns based on Crawrdd's research 
+                                    into chaos-focus correlation. Some minds need randomness to engage rather than being overwhelmed.
+                                </p>
+                                <p>
+                                    <strong>Technical Innovation:</strong> No batteries, no complicated mechanisms. Just physics 
+                                    having philosophical disagreements with itself, creating sound-triggered movement that activates 
+                                    zoom mode while engaging puzzle-solving cognitive processes.
+                                </p>
+                                <p class="text-bluey-yellow font-bold italic">
+                                    "Wait, did it just—OH MY GOD IT MOVED!" —Crawrdd, every single time
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div class="text-center bg-white rounded-3xl p-12 shadow-lg">
+                    <h2 class="text-4xl font-black text-gray-800 mb-6">Follow the Research</h2>
+                    <p class="text-xl text-gray-600 font-medium mb-8">
+                        Watch our design consultants and their ongoing quality control work
+                    </p>
+                    <a href="https://instagram.com/theronintoymaker" target="_blank" class="bg-purple text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-purple-700 transition-all transform hover:scale-105 inline-block">
+                        @theronintoymaker →
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- INTEREST FORM PAGE -->
+    <div id="interest" class="page">
+        <section class="min-h-screen bg-warm-cream py-20">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h1 class="text-6xl font-black text-gray-800 mb-8">Join the Chaos</h1>
+                    <p class="text-2xl text-gray-600 font-medium">Get notified when your favorite toy launches</p>
+                </div>
+
+                <div class="bg-white rounded-3xl p-8 shadow-lg max-w-2xl mx-auto">
+                    <form action="https://formspree.io/f/xovnkajz" method="POST" class="space-y-6">
+                        <div>
+                            <label class="block text-gray-700 font-bold mb-2">Which toy caught your attention?</label>
+                            <select name="toy_interest" class="w-full p-4 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-deep-teal font-medium" required>
+                                <option value="">Choose your chaos...</option>
+                                <option value="reelin">Reelin - For cooperative hunting experiments</option>
+                                <option value="rover">Rover - For quantum hunting research</option>
+                                <option value="rollin">Rollin' Ronin - For sound-activated velocity studies</option>
+                                <option value="chatter">ChatterBox - For interspecies dialogue research</option>
+                                <option value="all">All of them! (Maximum chaos)</option>
+                            </select>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-gray-700 font-bold mb-2">Name</label>
+                                <input type="text" name="name" class="w-full p-4 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-deep-teal font-medium" placeholder="Human name here" required>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-bold mb-2">Email</label>
+                                <input type="email" name="email" class="w-full p-4 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-deep-teal font-medium" placeholder="your@email.com" required>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-gray-700 font-bold mb-2">City</label>
+                                <input type="text" name="city" class="w-full p-4 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-deep-teal font-medium" placeholder="Bangalore, Mumbai, etc.">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-bold mb-2">How did you hear about us?</label>
+                                <select name="referral_source" class="w-full p-4 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-deep-teal font-medium">
+                                    <option value="">Choose one...</option>
+                                    <option value="instagram">Instagram</option>
+                                    <option value="word-of-mouth">Friend/Word of mouth</option>
+                                    <option value="event">At an event</option>
+                                    <option value="search">Google search</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-gray-700 font-bold mb-2">Tell us about your research subjects</label>
+                            <textarea name="cat_info" rows="3" class="w-full p-4 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-deep-teal font-medium" placeholder="Species, ages, personalities, current entertainment preferences, any special requirements for optimal chaos..."></textarea>
+                        </div>
+
+                        <div>
+                            <label class="block text-gray-700 font-bold mb-2">What's your biggest frustration with current cat toys?</label>
+                            <textarea name="current_frustrations" rows="2" class="w-full p-4 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-deep-teal font-medium" placeholder="They break too fast, cats get bored, too expensive, not engaging enough..."></textarea>
+                        </div>
+
+                        <div>
+                            <label class="block text-gray-700 font-bold mb-2">Anything else we should know?</label>
+                            <textarea name="additional_notes" rows="2" class="w-full p-4 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-deep-teal font-medium" placeholder="Questions, special requests, or just want to say hi to the research team..."></textarea>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="bg-deep-teal text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-teal-700 transition-all transform hover:scale-105">
+                                Count Me In! 🎯
+                            </button>
+                            <p class="text-gray-500 text-sm mt-4">
+                                We'll only email you about toy launches and research updates. Promise.
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Product Expansion Modal -->
+    <div id="toyModal" class="fixed inset-0 bg-gray-900 bg-opacity-75 hidden z-50 flex items-center justify-center p-6" onclick="closeToy(event)">
+        <div class="bg-white rounded-3xl max-w-4xl w-full max-h-screen overflow-y-auto relative shadow-2xl">
+            <button class="absolute top-6 right-6 bg-warm-ochre rounded-full p-3 hover:bg-yellow-400 transition-colors z-10" onclick="closeToy()">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <div id="toyContent" class="p-8">
+                <!-- Dynamic content -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const toys = {
+            reelin: {
+                name: "Reelin",
+                price: "₹350",
+                emoji: "🎣",
+                tagline: "An anthropological study in cooperative chaos",
+                story: "Developed in collaboration with Gwilo, Senior Research Fellow in Applied Mischief. Made from bamboo that grew up wanting to be a fishing rod, paired with cotton string that has commitment issues. Designed to achieve Beautiful Destruction after approximately 50 sessions of quality chaos. Comes with a 3-month warranty because we believe in second chances (and Gwilo believes in third and fourth chances).",
+                bg: "bg-deep-teal"
+            },
+            rover: {
+                name: "Rover", 
+                price: "₹3,000",
+                emoji: "🭀",
+                tagline: "For quantum hunting experiments",
+                story: "A modified micro mouse engineered to Zelda's exacting specifications for live prey simulation. Her research focuses on the precise mathematics of pursuit—the exact angle of approach, the optimal unpredictability ratio, the perfect moment of engagement. She evaluates each autonomous sequence with the cool detachment of a master critic, demanding nothing less than perfection in every movement pattern.",
+                bg: "bg-deep-teal"
+            },
+            rollin: {
+                name: "Rollin' Ronin",
+                price: "₹1,499", 
+                emoji: "⚽",
+                tagline: "For sound-activated velocity studies",
+                story: "Weighted interior creates unpredictable movement patterns based on Crawrdd's research into chaos-focus correlation. Powered entirely by physics having philosophical disagreements with itself, creating sound-triggered movement that activates zoom mode while engaging cognitive processes.",
+                bg: "bg-sage-green"
+            },
+            chatter: {
+                name: "ChatterBox",
+                price: "₹2,200",
+                emoji: "🗣️", 
+                tagline: "For interspecies dialogue research",
+                story: "Record buttons for actual conversations between species. 30-second playback capability enables your research subjects to express their exact opinions about your life choices. Based on groundbreaking research from Bunny the Talking Dog. Revolutionary communication technology.",
+                bg: "bg-gray-700"
+            }
+        };
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        function expandToy(toyKey) {
+            const toy = toys[toyKey];
+            const modal = document.getElementById('toyModal');
+            const content = document.getElementById('toyContent');
+            
+            content.innerHTML = `
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <h2 class="text-5xl font-black text-gray-800">${toy.name}</h2>
+                            <div class="text-4xl">${toy.emoji}</div>
+                        </div>
+                        <p class="text-xl font-bold text-gray-700">${toy.tagline}</p>
+                        <p class="text-lg text-gray-600 font-medium leading-relaxed">${toy.story}</p>
+                        <div class="text-4xl font-black text-deep-teal">${toy.price}</div>
+                        <button class="bg-deep-teal text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-teal-700 transition-all transform hover:scale-105 w-full" onclick="showPage('interest'); closeToy();">
+                            Get Notified
+                        </button>
+                        <p class="text-center text-gray-500 text-sm">
+                            Follow <a href="https://instagram.com/theronintoymaker" target="_blank" class="underline">@theronintoymaker</a> for research updates
+                        </p>
+                    </div>
+                    <div class="aspect-square ${toy.bg} rounded-3xl flex items-center justify-center relative overflow-hidden group clickable" onclick="playVideo(this)">
+                        <div class="text-white text-8xl">${toy.emoji}</div>
+                        <div class="absolute inset-0 bg-gray-800 opacity-0 group-hover:opacity-30 transition-opacity"></div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <div class="text-white text-center">
+                                <div class="text-4xl mb-2">▶</div>
+                                <p class="font-bold">Watch Video</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeToy(event) {
+            if (event && event.target !== event.currentTarget) return;
+            document.getElementById('toyModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function playBounce(el) {
+            el.classList.add('bounce-play');
+            setTimeout(() => el.classList.remove('bounce-play'), 2000);
+        }
+
+        function playWiggle(el) {
+            el.classList.add('wiggle-wild');
+            setTimeout(() => el.classList.remove('wiggle-wild'), 1500);
+        }
+
+        function playFloat(el) {
+            el.classList.add('float-dance');
+            setTimeout(() => el.classList.remove('float-dance'), 3000);
+        }
+
+        function playVideo(el) {
+            el.style.transform = 'scale(1.1) rotate(360deg)';
+            el.style.transition = 'transform 0.8s ease-out';
+            setTimeout(() => {
+                el.style.transform = '';
+                el.style.transition = 'transform 0.3s ease-out';
+            }, 800);
+        }
+
+        function celebrate() {
+            const colors = ['#2D5A5A', '#CC8E35', '#FF6B6B', '#87A96B'];
+            for(let i = 0; i < 20; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'absolute w-4 h-4 rounded-full';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.top = '100%';
+                confetti.style.animation = `confetti-${i} 3s ease-out forwards`;
+                confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                document.body.appendChild(confetti);
+                
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes confetti-${i} {
+                        to {
+                            transform: translateY(-100vh) rotate(720deg);
+                            opacity: 0;
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+                
+                setTimeout(() => {
+                    confetti.remove();
+                    style.remove();
+                }, 3000);
+            }
+        }
+    </script>
+</body>
+</html>
