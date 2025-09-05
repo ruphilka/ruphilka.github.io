@@ -3,16 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ruby Paulson - Writer & Content Strategist</title>
+    <title>Ruby Paulson - Strategist & Writer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5ee19ef111.js" crossorigin="anonymous"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
+                        'purple': '#640D5F',
+                        'sunshine': '#FCDC2A',
+                        'cream': '#F7F6BB'
+                    },
+                    fontFamily: {
+                        'rubik': ['Rubik', 'sans-serif']
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'fadeInUp': 'fadeInUp 0.8s ease-out forwards',
+                        'slideIn': 'slideIn 0.6s ease-out forwards'
                         'primary': 'var(--color-primary)',
                         'secondary': 'var(--color-secondary)',
                         'accent': 'var(--color-accent)',
@@ -37,6 +50,61 @@
         }
     </script>
     <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .reveal { opacity: 0; transform: translateY(30px); }
+        .reveal.active { animation: fadeInUp 0.8s ease-out forwards; }
+    </style>
+</head>
+
+<body class="bg-black text-white font-rubik overflow-x-hidden">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-sm border-b border-sunshine/20">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-sunshine font-bold text-xl">Ruby P.</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#work" class="hover:text-sunshine transition-colors duration-300">Work</a>
+                    <a href="#about" class="hover:text-sunshine transition-colors duration-300">Story</a>
+                    <a href="#contact" class="hover:text-sunshine transition-colors duration-300">Let's Talk</a>
+                </div>
+                <button class="md:hidden text-black">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center px-6 pt-20">
+        <div class="max-w-4xl mx-auto text-center space-y-8">
+            <div class="animate-fadeInUp">
+                <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight">
+                    I Turn Boring Brands Into 
+                    <span class="text-sunshine">Human Stories</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-400 mb-8 max-w-3xl mx-auto font-light">
+                    Ruby Paulson. Content strategist for brands that give a damn about making the world less terrible.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="#contact" class="bg-sunshine text-black px-8 py-4 rounded-none font-semibold hover:bg-purple hover:text-white transition-all duration-300 transform hover:scale-105">
+                        Work With Me
+                    </a>
+                    <a href="mailto:ruphilka@gmail.com" class="text-cream hover:text-sunshine transition-colors duration-300 flex items-center">
+                        <i class="fas fa-envelope mr-2"></i>
+                        ruphilka@gmail.com
+
         :root {
             /* Light theme (default) */
             --color-primary: #FF6B35;
@@ -266,6 +334,53 @@
                 </div>
             </div>
             
+            <div class="animate-float mt-16">
+                <i class="fas fa-chevron-down text-sunshine text-2xl"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- What I Actually Do -->
+    <section class="py-32 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-20 reveal">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    What I Actually Do
+                </h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                    I don't do corporate speak. I create communication that makes humans care.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="text-center space-y-6 reveal">
+                    <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto">
+                        <i class="fas fa-bullhorn text-sunshine text-4xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold">Brand Strategy That Bites</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Turn your "meh" messaging into "holy shit, this actually makes sense" communication that humans remember.
+                    </p>
+                </div>
+                
+                <div class="text-center space-y-6 reveal">
+                    <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto">
+                        <i class="fas fa-fire text-sunshine text-4xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold">Crisis Communication</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        When everything's on fire, I'm the one with the fire extinguisher and a plan that doesn't involve panicking.
+                    </p>
+                </div>
+                
+                <div class="text-center space-y-6 reveal">
+                    <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto">
+                        <i class="fas fa-users text-sunshine text-4xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold">Internal Communications</h3>
+                    <p class="text-black-400 leading-relaxed">
+                        Transform your chaotic internal messaging into something employees actually read and act on.
+                    </p>
             <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-float">
                 <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
@@ -313,6 +428,51 @@
         </div>
     </section>
 
+    <!-- Featured Work -->
+    <section id="work" class="py-32 px-6 bg-sunshine/5">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-20 reveal">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Work That Actually Worked
+                </h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                    Real results for real brands that wanted to be better.
+                </p>
+            </div>
+            
+            <!-- Licious Case Study -->
+            <div class="mb-24 reveal">
+                <div class="grid md:grid-cols-2 gap-16 items-center">
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-sunshine rounded flex items-center justify-center">
+                                <i class="fas fa-utensils text-black text-2xl"></i>
+                            </div>
+                            <h3 class="text-3xl font-bold">Licious</h3>
+                        </div>
+                        <h4 class="text-xl font-semibold text-sunshine">Making Carnivores Trust An App</h4>
+                        <p class="text-gray-300 leading-relaxed">
+                            Convinced skeptical meat lovers to trust a startup with their precious protein purchases. 
+                            Built brand voice around trust and quality, organized community events, and created content 
+                            that made people actually care about where their chicken came from.
+                        </p>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <div class="text-3xl font-bold text-sunshine">800%</div>
+                                <div class="text-gray-400">Reputation boost in 1 year</div>
+                            </div>
+                            <div>
+                                <div class="text-3xl font-bold text-sunshine">#1</div>
+                                <div class="text-gray-400">Position in Bangalore food community</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-black to-sunshine/20 p-8 rounded-lg">
+                        <div class="text-center space-y-4">
+                            <i class="fas fa-trophy text-sunshine text-4xl"></i>
+                            <div class="text-sm text-gray-300">The Challenge</div>
+                            <div class="text-lg font-medium">"Make people trust an app with their meat purchases when they've been buying from the same butcher for 20 years"</div>
+                        </div>
     <!-- Current Role -->
     <section class="py-20 px-6 intersection-observe">
         <div class="max-w-5xl mx-auto">
@@ -464,6 +624,74 @@
                 </div>
             </div>
 
+            <!-- Maersk Case Study -->
+            <div class="mb-24 reveal">
+                <div class="grid md:grid-cols-2 gap-16 items-center">
+                    <div class="bg-gradient-to-br from-black to-sunshine/20 p-8 rounded-lg order-2 md:order-1">
+                        <div class="text-center space-y-4">
+                            <i class="fas fa-ship text-sunshine text-4xl"></i>
+                            <div class="text-sm text-gray-300">The Challenge</div>
+                            <div class="text-lg font-medium">"Make shipping logistics feel human while cutting onboarding time from weeks to days"</div>
+                        </div>
+                    </div>
+                    <div class="space-y-6 order-1 md:order-2">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-sunshine rounded flex items-center justify-center">
+                                <i class="fas fa-anchor text-black"></i>
+                            </div>
+                            <h3 class="text-3xl font-bold">Maersk & Sealand</h3>
+                        </div>
+                        <h4 class="text-xl font-semibold text-sunshine">Making Global Shipping Actually Make Sense</h4>
+                        <p class="text-gray-300 leading-relaxed">
+                            Created unified style guides that turned inconsistent corporate rambling into coherent brand voices. 
+                            Made Sealand feel approachable while keeping Maersk authoritative. Because apparently, 
+                            even shipping containers need personality.
+                        </p>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <div class="text-3xl font-bold text-sunshine">15×</div>
+                                <div class="text-gray-400">Increase in mobile bookings</div>
+                            </div>
+                            <div>
+                                <div class="text-3xl font-bold text-sunshine">52%</div>
+                                <div class="text-gray-400">Boost in product searches</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lenovo Case Study -->
+            <div class="reveal">
+                <div class="grid md:grid-cols-2 gap-16 items-center">
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-sunshine rounded flex items-center justify-center">
+                                <i class="fas fa-laptop text-black"></i>
+                            </div>
+                            <h3 class="text-3xl font-bold">Lenovo India</h3>
+                        </div>
+                        <h4 class="text-xl font-semibold text-sunshine">Digital Marie Kondo For Corporate Communications</h4>
+                        <p class="text-gray-300 leading-relaxed">
+                            Employees were drowning in 5+ useless emails daily. I built a tiered communication system 
+                            that sparked joy (and actually got read). Turned email chaos into zen garden productivity.
+                        </p>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <div class="text-3xl font-bold text-sunshine">80%</div>
+                                <div class="text-gray-400">Reduction in email noise</div>
+                            </div>
+                            <div>
+                                <div class="text-3xl font-bold text-sunshine">50%</div>
+                                <div class="text-gray-400">Boost in engagement</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-black to-sunshine/20 p-8 rounded-lg">
+                        <div class="text-center space-y-4">
+                            <i class="fas fa-inbox text-sunshine text-4xl"></i>
+                            <div class="text-sm text-gray-300">The Challenge</div>
+                            <div class="text-lg font-medium">"Employees getting 5 pointless emails daily and missing the actually important stuff"</div>
             <!-- Tier 3: Growth Companies & F&B -->
             <div class="mb-16">
                 <h3 class="text-2xl font-bold text-accent mb-8 text-center">Growth Companies & Market Expansion</h3>
@@ -575,12 +803,40 @@
                                     <p class="text-text-muted text-xs">Sustainability narratives for Bangladesh green energy initiatives</p>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+
+    <!-- About/Story Section -->
+    <section id="about" class="py-32 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="reveal space-y-8">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    The Story Behind The Sass
+                </h2>
+                <div class="text-left space-y-6 text-lg leading-relaxed text-gray-300">
+                    <p>
+                        <span class="text-sunshine font-semibold">14+ years</span> of turning corporate mumbling into actual human communication. 
+                        I've worked with everyone from scrappy startups to global giants, and here's what I've learned: 
+                        most brands are terrified of sounding like humans.
+                    </p>
+                    <p>
+                        I specialize in working with <span class="text-sunshine font-semibold">inclusive, women-first organizations</span> 
+                        that are actually trying to make the world less terrible. If you're just here to make rich people richer, 
+                        we're probably not a match.
+                    </p>
+                    <p>
+                        Currently at <span class="text-sunshine font-semibold">Lenovo</span> as Internal Communications Coordinator, 
+                        where I've pioneered India's first employee-focused tech podcast and won a Team Excellence Award for not being boring.
+                    </p>
+                    <p class="text-xl text-center pt-8 italic text-cream">
+                        "I don't do corporate speak. I do human speak that actually makes people give a damn."
+                    </p>
 
     <!-- Service Offerings -->
     <section class="py-20 px-6 intersection-observe" style="background: var(--color-bg-secondary);">
@@ -649,10 +905,41 @@
                             <span class="text-text-muted">Integrated content strategy and multi-channel campaign development</span>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
     </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 px-6 bg-sunshine/10">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="reveal space-y-8">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Let's Build Something That Matters
+                </h2>
+                <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
+                    If you're tired of bland brand messaging and ready for communication that actually connects with humans, let's talk.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
+                    <a href="mailto:ruphilka@gmail.com" 
+                       class="bg-sunshine text-black px-10 py-4 rounded-none font-semibold hover:bg-purple hover:text-white transition-all duration-300 transform hover:scale-105 flex items-center">
+                        <i class="fas fa-envelope mr-3"></i>
+                        Send me an Email
+                    </a>
+                    <a href="https://www.linkedin.com/in/rubypaulson" 
+                       class="text-cream hover:text-sunshine transition-colors duration-300 flex items-center text-lg">
+                        <i class="fab fa-linkedin mr-3"></i>
+                        Ping me on LinkedIn
+                    </a>
+                </div>
+                
+                <div class="border-t border-sunshine/30 pt-8">
+                    <p class="text-gray-500 text-sm">
+                        Based in Bengaluru, looking for brands worldwide who believe in making a difference!
+                    </p>
 
     <!-- Performance Metrics -->
     <section class="py-20 px-6 intersection-observe">
@@ -676,10 +963,58 @@
                     <div class="text-5xl font-bold gradient-text mb-4">14+</div>
                     <h4 class="font-semibold text-text-primary mb-2">Years of Strategic Excellence</h4>
                     <p class="text-text-muted">Proven track record delivering sustainable, ethical communications solutions across global markets</p>
+
                 </div>
             </div>
         </div>
     </section>
+
+
+    <!-- Footer -->
+    <footer class="py-8 px-6 border-t border-sunshine/20 hidden">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="text-sunshine font-bold text-xl mb-4 md:mb-0">Ruby Paulson</div>
+            <div class="text-gray-500 text-sm text-center md:text-right">
+                © 2025 Ruby Paulson.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Intersection Observer for Animations -->
+    <script>
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
 
     <!-- Contact Section -->
     <section class="py-20 px-6 intersection-observe" style="background: var(--color-bg-secondary);">
