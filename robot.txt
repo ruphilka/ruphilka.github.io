@@ -1,0 +1,6 @@
+# Allow all web crawlers to access all content
+User-agent: *
+Allow: /
+
+# Provide the location of your sitemap
+Sitemap: https://ronintoys.com/sitemap.xml
