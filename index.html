@@ -190,45 +190,62 @@
             margin: 0 auto;
         }
         
-        /* Ronin Preview Section - Shortened for main page */
-        .ronin-preview {
+        /* Current Work Section with Flexbox */
+        .current-work-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 6rem 2rem;
+        }
+        
+        .current-work-container {
+            max-width: 800px;
+            width: 100%;
+        }
+        
+        .current-work-box {
             background: var(--color-bg-secondary);
             border-left: 4px solid var(--color-teal);
             padding: 3rem;
-            margin: 4rem 0;
         }
         
-        .ronin-preview h2 {
+        .current-work-box h2 {
             color: var(--color-teal);
+            font-size: 2.5rem;
             margin-bottom: 1rem;
+            text-align: center;
         }
         
-        .ronin-preview p {
+        .current-work-box .subtitle {
+            color: var(--color-text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .current-work-box p {
             color: var(--color-text-secondary);
             line-height: 1.8;
             margin-bottom: 1.5rem;
+            text-align: left;
         }
         
-        .ronin-preview .learn-more {
+        .current-work-box .btn-primary {
             display: inline-block;
             margin-top: 1rem;
-            color: var(--color-teal);
-            text-decoration: none;
-            font-weight: 600;
-            font-family: var(--font-heading);
-            transition: all 0.3s ease;
         }
         
-        .ronin-preview .learn-more:hover {
-            color: var(--color-yellow);
-            transform: translateX(5px);
-        }
-        
-        /* Full Ronin Page */
+        /* Ronin Full Page Styles */
         .ronin-full {
             display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: var(--color-bg-main);
             padding: 8rem 2rem 6rem;
+            overflow-y: auto;
         }
         
         .ronin-full.active {
@@ -236,21 +253,15 @@
         }
         
         .ronin-content {
-    max-width: 900px;
-    margin: 0 auto;
-    text-align: center;
-}
+            max-width: 900px;
+            margin: 0 auto;
+        }
         
         .ronin-content h2 {
             color: var(--color-teal);
             font-size: 3rem;
             margin-bottom: 0.5rem;
         }
-
-        .ronin-content h2,
-.ronin-content .subtitle {
-    text-align: center;
-}
         
         .ronin-content .subtitle {
             color: var(--color-text-muted);
@@ -265,19 +276,12 @@
             margin-bottom: 1rem;
             font-size: 1.75rem;
         }
-
-        .ronin-content h3 {
-    color: var(--color-coral);
-    margin-top: 3rem;
-    margin-bottom: 1rem;
-    font-size: 1.75rem;
-    text-align: center;
-}
         
         .ronin-content p {
             margin-bottom: 1.5rem;
             line-height: 1.8;
             color: var(--color-text-secondary);
+            text-align: left;
         }
         
         .ronin-content em {
@@ -342,7 +346,7 @@
             color: var(--color-coral);
         }
         
-        /* Work Cards */
+        /* Work Cards - Core Work Section */
         .work-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -357,11 +361,11 @@
             transition: all 0.3s ease;
         }
         
-        .work-category-card:hover {
-    transform: translateY(-5px);
-    border-color: #E9C46A;
-    box-shadow: 0 10px 30px rgba(233, 196, 106, 0.2);
-}
+        /* Match By The Numbers hover animation */
+        .work-card:hover {
+            border-color: #E9C46A;
+            transform: translateY(-5px);
+        }
         
         .work-card h3 {
             color: var(--color-yellow);
@@ -462,14 +466,15 @@
         }
         
         .contact-section h2 {
-            color: var(--color-coral);
-            margin-bottom: 1rem;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1.5rem;
+            color: var(--color-yellow);
         }
         
         .contact-section p {
+            font-size: 1.2rem;
             color: var(--color-text-secondary);
-            font-size: 1.25rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
@@ -477,10 +482,26 @@
         
         /* Footer */
         footer {
-            padding: 2rem;
             text-align: center;
-            border-top: 1px solid rgba(231, 111, 81, 0.2);
+            padding: 3rem 2rem;
             color: var(--color-text-muted);
+            border-top: 1px solid rgba(231, 111, 81, 0.2);
+        }
+        
+        /* Utility Classes */
+        .hidden {
+            display: none !important;
+        }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         /* Animations */
@@ -495,34 +516,15 @@
             }
         }
         
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-        
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Page visibility */
-        .main-content.hidden {
-            display: none;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         
         /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
-                display: none;
-            }
-            
-            .hero {
-                padding: 5rem 1.5rem 3rem;
-            }
-            
-            section {
-                padding: 4rem 1.5rem;
+                gap: 1.5rem;
             }
             
             .cta-buttons {
@@ -530,68 +532,53 @@
                 align-items: center;
             }
             
-            .ronin-preview {
+            .current-work-box {
                 padding: 2rem;
-            }
-            
-            .ronin-content h2 {
-                font-size: 2rem;
             }
         }
     </style>
 </head>
-
 <body>
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="nav-logo">Ruby P.</div>
+            <div class="nav-logo">Ruby Paulson</div>
             <ul class="nav-links">
-    <li><a href="#work">Core Work</a></li>
-    <li><a href="#ronin" onclick="showRoninPage(event)">Taking Play Seriously</a></li>
-</ul>
+                <li><a href="#work">All Things Work</a></li>
+                <li><a href="#ronin" onclick="showRoninPage(event)">Taking Play Seriously</a></li>
+            </ul>
         </div>
     </nav>
 
-    <!-- Main Content (Home Page) -->
+    <!-- Main Content -->
     <div class="main-content">
         <!-- Hero Section -->
-        <section id="home" class="hero">
+        <section class="hero" id="home">
             <div class="hero-content">
-                <h1>
-                    Making connections that last  
-                    <span class="highlight">longer than campaigns</span>
-                </h1>
-                <p class="hero-subtitle">
-                    Hi! I'm Ruby. I build systems and strategies that connect people, ideas, and purpose in ways that last.
-                </p>
-                <div class="cta-buttons">
-                    <a href="#contact" class="btn-primary">Work With Me</a>
-                    <a href="mailto:ruphilka@gmail.com" class="btn-secondary">
-                        <i class="fas fa-envelope"></i>
-                        ruphilka@gmail.com
-                    </a>
+                <h1>Making <span class="highlight">connections</span> that last longer than campaigns</h1>
+                <p class="hero-subtitle">Hi! I'm Ruby. I build systems and strategies that connect people, ideas, and purpose in ways that last.</p>
+            </div>
+        </section>
+
+        <!-- Current Work Section with Flexbox -->
+        <section class="current-work-section" id="current-work">
+            <div class="current-work-container">
+                <div class="current-work-box reveal">
+                    <h2>Ronin Toys</h2>
+                    <p class="subtitle">Current Work (August 2025–Present)</p>
+                    
+                    <p>I run Ronin Toys, where I design and manufacture cat toys. What can I say? I took years of designing narratives and experiences and applied it to making toys that cats destroy with enthusiasm.</p>
+                    
+                    <a href="#ronin" onclick="showRoninPage(event)" class="btn-primary">Read More About Ronin Toys</a>
                 </div>
             </div>
         </section>
 
-        <!-- Ronin Preview Section (Shortened) -->
-        <section class="ronin-preview">
-            <h2>Ronin Toys</h2>
-            <p><strong>Current Work (August 2025–Present)</strong></p>
-             <span class="highlight">
-            <p>I run Ronin Toys, where I design and manufacture cat toys. What can I say? I took years of designing narratives and experiences and applied it to making toys that cats destroy with enthusiasm.</p>
-                             </span>
-            <a href="#ronin" onclick="showRoninPage(event)" class="learn-more">
-                Read the full story →
-            </a>
-        </section>
-
-        <!-- Work Experience Section -->
+        <!-- Core Work Section -->
         <section id="work">
             <div class="section-header reveal">
                 <h2>Core Work</h2>
-                <p>14 years of stories that make sense (and sometimes, a difference)</p>
+                <p>Over a decade of strategic communications, brand development, and content strategy across global brands</p>
             </div>
             
             <div class="work-grid">
@@ -601,7 +588,7 @@
                     <p class="role">Internal Communication Specialist</p>
                     <p>Led strategic internal communications and events for employees across India.</p>
                     <ul>
-                        <li>Reduced non-priority emails by 30% over 4 months</li>  
+                        <li>Reduced non-priority emails by 30% over 4 months</li>
                         <li>Pioneered 10-minute podcast series for employees on tech and news</li>
                     </ul>
                 </div>
@@ -610,7 +597,7 @@
                     <h3>Maersk</h3>
                     <p class="date-range">October 2020 – June 2022</p>
                     <p class="role">Senior Copywriter</p>
-                    <p>Created B2B thought-leadership, style guides, and marketing copy. </p>
+                    <p>Created B2B thought-leadership, style guides, and marketing copy.</p>
                     <ul>
                         <li>Developed brand style guidelines for Maersk and Sealand and mentored copy team on long-form content.</li>
                         <li>Regions covered: APAC, Africa, West & Central Asia</li>
@@ -631,15 +618,15 @@
                     <h3>ReachAll</h3>
                     <p class="date-range">October 2013 – June 2016</p>
                     <p class="role">Senior Social Media Marketing Content Developer</p>
-                    <p>Created brand voice, social media strategy for F&B and hospitality clients including Licious, Matsuri, Yauatcha India, Punjab Grill.</p> 
-                     <p>Handled clients' live events, PR, and digital marketing. </p>   
+                    <p>Created brand voice, social media strategy for F&B and hospitality clients including Licious, Matsuri, Yauatcha India, Punjab Grill.</p>
+                    <p>Handled clients' live events, PR, and digital marketing.</p>
                 </div>
                 
                 <div class="work-card reveal">
                     <h3>BlogVault</h3>
                     <p class="date-range">July 2016 – September 2017</p>
                     <p class="role">Content Writer</p>
-                    <p>Led crisis communications when product was hacked, retaining customer and stakeholder trust.</p>  
+                    <p>Led crisis communications when product was hacked, retaining customer and stakeholder trust.</p>
                     <p>Created comprehensive content guidelines that reduced turnaround time for long-form content.</p>
                 </div>
                 
@@ -647,8 +634,8 @@
                     <h3>Syncfusion</h3>
                     <p class="date-range">January 2011 – November 2011</p>
                     <p class="role">Technical Writer</p>
-                    <p>Created documentation for ASP.NET, MVC, Silverlight, and WPF products.</p> 
-                        <p>Developed training materials and managed content workflows via SharePoint.</p>
+                    <p>Created documentation for ASP.NET, MVC, Silverlight, and WPF products.</p>
+                    <p>Developed training materials and managed content workflows via SharePoint.</p>
                 </div>
             </div>
         </section>
@@ -710,7 +697,7 @@
     <!-- Full Ronin Toys Page -->
     <div class="ronin-full" id="ronin-page">
         <div class="ronin-content">
-            <a href="#home" onclick="showMainContent()" class="back-link">← Back to main page</a>
+            <a href="#home" onclick="showMainContent()" class="back-link">← Back to All Things Work</a>
             
             <h2>Ronin Toys</h2>
             <p class="subtitle">Current Work (September 2025–Present)</p>
@@ -750,9 +737,6 @@
                 
                 <p style="margin-top: 1.5rem;">If you want to talk about what I'm building, feel free to reach out at <a href="mailto:ruphilka@ronintoys.com">ruphilka@ronintoys.com</a>. I'm always up for a good conversation.</p>
             </div>
-            
-         
-            
         </div>
     </div>
 
