@@ -236,15 +236,21 @@
         }
         
         .ronin-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
         
         .ronin-content h2 {
             color: var(--color-teal);
             font-size: 3rem;
             margin-bottom: 0.5rem;
         }
+
+        .ronin-content h2,
+.ronin-content .subtitle {
+    text-align: center;
+}
         
         .ronin-content .subtitle {
             color: var(--color-text-muted);
@@ -259,6 +265,14 @@
             margin-bottom: 1rem;
             font-size: 1.75rem;
         }
+
+        .ronin-content h3 {
+    color: var(--color-coral);
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+    text-align: center;
+}
         
         .ronin-content p {
             margin-bottom: 1.5rem;
@@ -343,11 +357,11 @@
             transition: all 0.3s ease;
         }
         
-        .work-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--color-coral);
-            box-shadow: 0 10px 30px rgba(231, 111, 81, 0.2);
-        }
+        .work-category-card:hover {
+    transform: translateY(-5px);
+    border-color: #E9C46A;
+    box-shadow: 0 10px 30px rgba(233, 196, 106, 0.2);
+}
         
         .work-card h3 {
             color: var(--color-yellow);
@@ -533,11 +547,9 @@
         <div class="nav-container">
             <div class="nav-logo">Ruby P.</div>
             <ul class="nav-links">
-                <li><a href="#home" onclick="showMainContent()">Home</a></li>
-                <li><a href="#work">Work</a></li>
-                <li><a href="#ronin" onclick="showRoninPage(event)">Ronin Toys</a></li>
-                <li><a href="#contact">Let's Talk</a></li>
-            </ul>
+    <li><a href="#work">Core Work</a></li>
+    <li><a href="#ronin" onclick="showRoninPage(event)">Taking Play Seriously</a></li>
+</ul>
         </div>
     </nav>
 
