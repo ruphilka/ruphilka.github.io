@@ -3,344 +3,775 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ruby Paulson - Writer & Strategist</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Ruby Paulson - Strategist & Writer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/5ee19ef111.js" crossorigin="anonymous"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'purple': '#640D5F',
-                        'sunshine': '#FCDC2A',
-                        'cream': '#F7F6BB'
-                    },
-                    fontFamily: {
-                        'rubik': ['Rubik', 'sans-serif']
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'fadeInUp': 'fadeInUp 0.8s ease-out forwards',
-                        'slideIn': 'slideIn 0.6s ease-out forwards'
-                    }
-                }
+    
+    <style>
+        :root {
+            --color-bg-main: #0d0d0d;
+            --color-bg-secondary: #1a1a1a;
+            --color-bg-tertiary: #242424;
+            
+            --color-text-primary: #f5f1e8;
+            --color-text-secondary: #c7c3b8;
+            --color-text-muted: #8b8680;
+            
+            --color-coral: #E76F51;
+            --color-coral-bright: #FF6B6B;
+            --color-yellow: #F4A261;
+            --color-yellow-bright: #E9C46A;
+            --color-teal: #4ecdc4;
+            --color-sage: #7eb77f;
+            
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Readex Pro', sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background: var(--color-bg-main);
+            color: var(--color-text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(13, 13, 13, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(231, 111, 81, 0.2);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--color-yellow);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--color-text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--color-coral);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .hero .highlight {
+            color: var(--color-coral);
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: var(--color-text-secondary);
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+        
+        .btn-primary {
+            background: var(--color-coral);
+            color: var(--color-text-primary);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: var(--font-heading);
+            transition: all 0.3s ease;
+            border: 2px solid var(--color-coral);
+        }
+        
+        .btn-primary:hover {
+            background: var(--color-coral-bright);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(231, 111, 81, 0.3);
+        }
+        
+        .btn-secondary {
+            color: var(--color-yellow);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            color: var(--color-yellow-bright);
+        }
+        
+        /* Section Styling */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            color: var(--color-yellow);
+        }
+        
+        .section-header p {
+            font-size: 1.25rem;
+            color: var(--color-text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Ronin Preview Section - Shortened for main page */
+        .ronin-preview {
+            background: var(--color-bg-secondary);
+            border-left: 4px solid var(--color-teal);
+            padding: 3rem;
+            margin: 4rem 0;
+        }
+        
+        .ronin-preview h2 {
+            color: var(--color-teal);
+            margin-bottom: 1rem;
+        }
+        
+        .ronin-preview p {
+            color: var(--color-text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .ronin-preview .learn-more {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--color-teal);
+            text-decoration: none;
+            font-weight: 600;
+            font-family: var(--font-heading);
+            transition: all 0.3s ease;
+        }
+        
+        .ronin-preview .learn-more:hover {
+            color: var(--color-yellow);
+            transform: translateX(5px);
+        }
+        
+        /* Full Ronin Page */
+        .ronin-full {
+            display: none;
+            background: var(--color-bg-main);
+            padding: 8rem 2rem 6rem;
+        }
+        
+        .ronin-full.active {
+            display: block;
+        }
+        
+        .ronin-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .ronin-content h2 {
+            color: var(--color-teal);
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .ronin-content .subtitle {
+            color: var(--color-text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            font-weight: 500;
+        }
+        
+        .ronin-content h3 {
+            color: var(--color-coral);
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            font-size: 1.75rem;
+        }
+        
+        .ronin-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: var(--color-text-secondary);
+        }
+        
+        .ronin-content em {
+            color: var(--color-yellow);
+            font-style: italic;
+        }
+        
+        .ronin-cta {
+            margin-top: 3rem;
+            padding: 2.5rem;
+            background: var(--color-bg-secondary);
+            border-left: 4px solid var(--color-coral);
+        }
+        
+        .ronin-cta h4 {
+            color: var(--color-yellow);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .ronin-cta ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .ronin-cta li {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+            position: relative;
+            line-height: 1.7;
+        }
+        
+        .ronin-cta li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--color-coral);
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+        
+        .ronin-cta strong {
+            color: var(--color-coral);
+            font-weight: 600;
+        }
+        
+        .ronin-cta a {
+            color: var(--color-teal);
+            text-decoration: underline;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: var(--color-coral);
+        }
+        
+        /* Work Cards */
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .work-card {
+            background: var(--color-bg-secondary);
+            padding: 2rem;
+            border: 1px solid rgba(231, 111, 81, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .work-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-coral);
+            box-shadow: 0 10px 30px rgba(231, 111, 81, 0.2);
+        }
+        
+        .work-card h3 {
+            color: var(--color-yellow);
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .work-card .date-range {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .work-card .role {
+            color: var(--color-coral);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .work-card p {
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+        
+        .work-card ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 1rem;
+        }
+        
+        .work-card li {
+            color: var(--color-text-secondary);
+            margin-bottom: 0.5rem;
+            padding-left: 1.25rem;
+            position: relative;
+            font-size: 0.9rem;
+        }
+        
+        .work-card li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--color-coral);
+            font-weight: bold;
+        }
+        
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .stat-card {
+            background: var(--color-bg-secondary);
+            padding: 2.5rem;
+            text-align: center;
+            border: 1px solid rgba(244, 162, 97, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            border-color: var(--color-yellow);
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            font-family: var(--font-heading);
+            background: linear-gradient(135deg, var(--color-coral), var(--color-yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+        
+        .stat-card h4 {
+            color: var(--color-text-primary);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+        
+        .stat-card p {
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background: var(--color-bg-secondary);
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+        
+        .contact-section h2 {
+            color: var(--color-coral);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-section p {
+            color: var(--color-text-secondary);
+            font-size: 1.25rem;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(231, 111, 81, 0.2);
+            color: var(--color-text-muted);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
-    </script>
-    <style>
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
         }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
+        
+        /* Page visibility */
+        .main-content.hidden {
+            display: none;
         }
-        .reveal { opacity: 0; transform: translateY(30px); }
-        .reveal.active { animation: fadeInUp 0.8s ease-out forwards; }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 5rem 1.5rem 3rem;
+            }
+            
+            section {
+                padding: 4rem 1.5rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .ronin-preview {
+                padding: 2rem;
+            }
+            
+            .ronin-content h2 {
+                font-size: 2rem;
+            }
+        }
     </style>
 </head>
 
-<body class="bg-black text-white font-rubik overflow-x-hidden">
-    
+<body>
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-sm border-b border-sunshine/20">
-        <div class="max-w-6xl mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <div class="text-sunshine font-bold text-xl">Ruby P.</div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#work" class="hover:text-sunshine transition-colors duration-300">Work</a>
-                    <a href="#about" class="hover:text-sunshine transition-colors duration-300">Story</a>
-                    <a href="#contact" class="hover:text-sunshine transition-colors duration-300">Let's Talk</a>
-                </div>
-                <button class="md:hidden text-black">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">Ruby P.</div>
+            <ul class="nav-links">
+                <li><a href="#home" onclick="showMainContent()">Home</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#ronin" onclick="showRoninPage(event)">Ronin Toys</a></li>
+                <li><a href="#contact">Let's Talk</a></li>
+            </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="min-h-screen flex items-center justify-center px-6 pt-20">
-        <div class="max-w-4xl mx-auto text-center space-y-8">
-            <div class="animate-fadeInUp">
-                <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight">
+    <!-- Main Content (Home Page) -->
+    <div class="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>
                     I Turn Boring Brands Into 
-                    <span class="text-sunshine">Human Stories</span>
+                    <span class="highlight">Human Stories</span>
                 </h1>
-                <p class="text-xl md:text-2xl text-gray-400 mb-8 max-w-3xl mx-auto font-light">
+                <p class="hero-subtitle">
                     Ruby Paulson. Content strategist for brands that give a damn about making the world less terrible.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <a href="#contact" class="bg-sunshine text-black px-8 py-4 rounded-none font-semibold hover:bg-purple hover:text-white transition-all duration-300 transform hover:scale-105">
-                        Work With Me
-                    </a>
-                    <a href="mailto:ruphilka@gmail.com" class="text-cream hover:text-sunshine transition-colors duration-300 flex items-center">
-                        <i class="fas fa-envelope mr-2"></i>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn-primary">Work With Me</a>
+                    <a href="mailto:ruphilka@gmail.com" class="btn-secondary">
+                        <i class="fas fa-envelope"></i>
                         ruphilka@gmail.com
                     </a>
                 </div>
             </div>
-            
-            <div class="animate-float mt-16">
-                <i class="fas fa-chevron-down text-sunshine text-2xl"></i>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- What I Actually Do -->
-    <section class="py-32 px-6">
-        <div class="max-w-5xl mx-auto">
-            <div class="text-center mb-20 reveal">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                    What I Actually Do
-                </h2>
-                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-                    I don't do corporate speak. I create communication that makes humans care.
-                </p>
-            </div>
+        <!-- Ronin Preview Section (Shortened) -->
+        <section class="ronin-preview">
+            <h2>Ronin Toys</h2>
+            <p><strong>Current Work (September 2025–Present)</strong></p>
             
-            <div class="grid md:grid-cols-3 gap-12">
-                <div class="text-center space-y-6 reveal">
-                    <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto">
-                        <i class="fas fa-bullhorn text-sunshine text-4xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-semibold">Brand Strategy That Bites</h3>
-                    <p class="text-gray-400 leading-relaxed">
-                        Turn your "meh" messaging into "holy shit, this actually makes sense" communication that humans remember.
-                    </p>
-                </div>
-                
-                <div class="text-center space-y-6 reveal">
-                    <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto">
-                        <i class="fas fa-fire text-sunshine text-4xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-semibold">Crisis Communication</h3>
-                    <p class="text-gray-400 leading-relaxed">
-                        When everything's on fire, I'm the one with the fire extinguisher and a plan that doesn't involve panicking.
-                    </p>
-                </div>
-                
-                <div class="text-center space-y-6 reveal">
-                    <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto">
-                        <i class="fas fa-users text-sunshine text-4xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-semibold">Internal Communications</h3>
-                    <p class="text-black-400 leading-relaxed">
-                        Transform your chaotic internal messaging into something employees actually read and act on.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+            <p>I run Ronin Toys, where I design and manufacture cat toys—currently the Reelin (fishing-rod style) and Rattletail (wand toy). This is what happens when you take years of designing narratives and experiences and apply it to making actual objects that cats destroy with enthusiasm.</p>
+            
+            <p>The direction: moving to wood-based production with an artisan network that puts at least 30% of profits directly to skilled craftspeople. I'm building something economically sustainable that prioritizes fair work and quality over scale.</p>
+            
+            <a href="#ronin" onclick="showRoninPage(event)" class="learn-more">
+                Read the full story →
+            </a>
+        </section>
 
-    <!-- Featured Work -->
-    <section id="work" class="py-32 px-6 bg-sunshine/5">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-20 reveal">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                    Work That Actually Worked
-                </h2>
-                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-                    Real results for real brands that wanted to be better.
-                </p>
+        <!-- Work Experience Section -->
+        <section id="work">
+            <div class="section-header reveal">
+                <h2>Core Work</h2>
+                <p>14 years of making brands sound human</p>
             </div>
             
-            <!-- Licious Case Study -->
-            <div class="mb-24 reveal">
-                <div class="grid md:grid-cols-2 gap-16 items-center">
-                    <div class="space-y-6">
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 bg-sunshine rounded flex items-center justify-center">
-                                <i class="fas fa-utensils text-black text-2xl"></i>
-                            </div>
-                            <h3 class="text-3xl font-bold">Licious</h3>
-                        </div>
-                        <h4 class="text-xl font-semibold text-sunshine">Making Carnivores Trust An App</h4>
-                        <p class="text-gray-300 leading-relaxed">
-                            Convinced skeptical meat lovers to trust a startup with their precious protein purchases. 
-                            Built brand voice around trust and quality, organized community events, and created content 
-                            that made people actually care about where their chicken came from.
-                        </p>
-                        <div class="grid grid-cols-2 gap-6">
-                            <div>
-                                <div class="text-3xl font-bold text-sunshine">800%</div>
-                                <div class="text-gray-400">Reputation boost in 1 year</div>
-                            </div>
-                            <div>
-                                <div class="text-3xl font-bold text-sunshine">#1</div>
-                                <div class="text-gray-400">Position in Bangalore food community</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-gradient-to-br from-black to-sunshine/20 p-8 rounded-lg">
-                        <div class="text-center space-y-4">
-                            <i class="fas fa-trophy text-sunshine text-4xl"></i>
-                            <div class="text-sm text-gray-300">The Challenge</div>
-                            <div class="text-lg font-medium">"Make people trust an app with their meat purchases when they've been buying from the same butcher for 20 years"</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Maersk Case Study -->
-            <div class="mb-24 reveal">
-                <div class="grid md:grid-cols-2 gap-16 items-center">
-                    <div class="bg-gradient-to-br from-black to-sunshine/20 p-8 rounded-lg order-2 md:order-1">
-                        <div class="text-center space-y-4">
-                            <i class="fas fa-ship text-sunshine text-4xl"></i>
-                            <div class="text-sm text-gray-300">The Challenge</div>
-                            <div class="text-lg font-medium">"Make shipping logistics feel human while cutting onboarding time from weeks to days"</div>
-                        </div>
-                    </div>
-                    <div class="space-y-6 order-1 md:order-2">
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 bg-sunshine rounded flex items-center justify-center">
-                                <i class="fas fa-anchor text-black"></i>
-                            </div>
-                            <h3 class="text-3xl font-bold">Maersk & Sealand</h3>
-                        </div>
-                        <h4 class="text-xl font-semibold text-sunshine">Making Global Shipping Actually Make Sense</h4>
-                        <p class="text-gray-300 leading-relaxed">
-                            Created unified style guides that turned inconsistent corporate rambling into coherent brand voices. 
-                            Made Sealand feel approachable while keeping Maersk authoritative. Because apparently, 
-                            even shipping containers need personality.
-                        </p>
-                        <div class="grid grid-cols-2 gap-6">
-                            <div>
-                                <div class="text-3xl font-bold text-sunshine">15×</div>
-                                <div class="text-gray-400">Increase in mobile bookings</div>
-                            </div>
-                            <div>
-                                <div class="text-3xl font-bold text-sunshine">52%</div>
-                                <div class="text-gray-400">Boost in product searches</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Lenovo Case Study -->
-            <div class="reveal">
-                <div class="grid md:grid-cols-2 gap-16 items-center">
-                    <div class="space-y-6">
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 bg-sunshine rounded flex items-center justify-center">
-                                <i class="fas fa-laptop text-black"></i>
-                            </div>
-                            <h3 class="text-3xl font-bold">Lenovo India</h3>
-                        </div>
-                        <h4 class="text-xl font-semibold text-sunshine">Digital Marie Kondo For Corporate Communications</h4>
-                        <p class="text-gray-300 leading-relaxed">
-                            Employees were drowning in 5+ useless emails daily. I built a tiered communication system 
-                            that sparked joy (and actually got read). Turned email chaos into zen garden productivity.
-                        </p>
-                        <div class="grid grid-cols-2 gap-6">
-                            <div>
-                                <div class="text-3xl font-bold text-sunshine">80%</div>
-                                <div class="text-gray-400">Reduction in email noise</div>
-                            </div>
-                            <div>
-                                <div class="text-3xl font-bold text-sunshine">50%</div>
-                                <div class="text-gray-400">Boost in engagement</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-gradient-to-br from-black to-sunshine/20 p-8 rounded-lg">
-                        <div class="text-center space-y-4">
-                            <i class="fas fa-inbox text-sunshine text-4xl"></i>
-                            <div class="text-sm text-gray-300">The Challenge</div>
-                            <div class="text-lg font-medium">"Employees getting 5 pointless emails daily and missing the actually important stuff"</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About/Story Section -->
-    <section id="about" class="py-32 px-6">
-        <div class="max-w-4xl mx-auto text-center">
-            <div class="reveal space-y-8">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                    The Story Behind The Sass
-                </h2>
-                <div class="text-left space-y-6 text-lg leading-relaxed text-gray-300">
-                    <p>
-                        <span class="text-sunshine font-semibold">14+ years</span> of turning corporate mumbling into actual human communication. 
-                        I've worked with everyone from scrappy startups to global giants, and here's what I've learned: 
-                        most brands are terrified of sounding like humans.
-                    </p>
-                    <p>
-                        I specialize in working with <span class="text-sunshine font-semibold">inclusive, women-first organizations</span> 
-                        that are actually trying to make the world less terrible. If you're just here to make rich people richer, 
-                        we're probably not a match.
-                    </p>
-                    <p>
-                        Currently at <span class="text-sunshine font-semibold">Lenovo</span> as Internal Communications Coordinator, 
-                        where I've pioneered India's first employee-focused tech podcast and won a Team Excellence Award for not being boring.
-                    </p>
-                    <p class="text-xl text-center pt-8 italic text-cream">
-                        "I don't do corporate speak. I do human speak that actually makes people give a damn."
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-32 px-6 bg-sunshine/10">
-        <div class="max-w-4xl mx-auto text-center">
-            <div class="reveal space-y-8">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                    Let's Build Something That Matters
-                </h2>
-                <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
-                    If you're tired of bland brand messaging and ready for communication that actually connects with humans, let's talk.
-                </p>
-                
-                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
-                    <a href="mailto:ruphilka@gmail.com" 
-                       class="bg-sunshine text-black px-10 py-4 rounded-none font-semibold hover:bg-purple hover:text-white transition-all duration-300 transform hover:scale-105 flex items-center">
-                        <i class="fas fa-envelope mr-3"></i>
-                        Send me an Email
-                    </a>
-                    <a href="https://www.linkedin.com/in/rubypaulson" 
-                       class="text-cream hover:text-sunshine transition-colors duration-300 flex items-center text-lg">
-                        <i class="fab fa-linkedin mr-3"></i>
-                        Ping me on LinkedIn
-                    </a>
+            <div class="work-grid">
+                <div class="work-card reveal">
+                    <h3>Lenovo India</h3>
+                    <p class="date-range">June 2023 – April 2025</p>
+                    <p class="role">Internal Communication Specialist</p>
+                    <p>Led strategic internal communications and events for employees across India in conjunction with Marketing & various product divisions.</p>
+                    <ul>
+                        <li>Reduced non-priority emails by 30% over 4 months</li>
+                        <li>Pioneered 10-minute podcast series for employees on tech and news</li>
+                        <li>Managed town halls, executive visits, and Tech World '24 engagement</li>
+                    </ul>
                 </div>
                 
-                <div class="border-t border-sunshine/30 pt-8">
-                    <p class="text-gray-500 text-sm">
-                        Based in Bengaluru, looking for brands worldwide who believe in making a difference!
-                    </p>
+                <div class="work-card reveal">
+                    <h3>Maersk</h3>
+                    <p class="date-range">October 2020 – June 2022</p>
+                    <p class="role">Senior Copywriter</p>
+                    <p>Created thought-leadership and social media frameworks for global logistics. Mentored copy team on long-form content and inclusive communication.</p>
+                    <ul>
+                        <li>Developed brand style guidelines for Maersk and Sealand</li>
+                        <li>Led DEI advocacy for gender-neutral facilities and sensitivity training</li>
+                        <li>Marketing copy for APAC, Africa, West & Central Asia regions</li>
+                    </ul>
+                </div>
+                
+                <div class="work-card reveal">
+                    <h3>Byju's</h3>
+                    <p class="date-range">June 2018 – September 2019</p>
+                    <p class="role">Game Narrative Designer</p>
+                    <p>Designed educational game narratives for children aged 3-5 (Byju's Early Learn with Disney) and K-12 modules. Made education feel like play.</p>
+                </div>
+                
+                <div class="work-card reveal">
+                    <h3>ReachAll</h3>
+                    <p class="date-range">October 2013 – June 2016</p>
+                    <p class="role">Senior Social Media Marketing Content Developer</p>
+                    <p>Handled 35+ F&B and hospitality clients including Licious, Yauatcha India, Punjab Grill. Grew Licious 800x in one year through strategic social media and PR.</p>
+                </div>
+                
+                <div class="work-card reveal">
+                    <h3>BlogVault</h3>
+                    <p class="date-range">July 2016 – September 2017</p>
+                    <p class="role">Content Writer</p>
+                    <p>Led crisis communications when product was hacked, retaining customer and stakeholder trust. Created comprehensive content guidelines that reduced turnaround time for long-form content.</p>
+                </div>
+                
+                <div class="work-card reveal">
+                    <h3>Syncfusion</h3>
+                    <p class="date-range">January 2011 – November 2011</p>
+                    <p class="role">Technical Writer</p>
+                    <p>Created documentation for ASP.NET, MVC, Silverlight, and WPF products. Developed training materials and managed content workflows via SharePoint.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer class="py-8 px-6 border-t border-sunshine/20 hidden">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
-            <div class="text-sunshine font-bold text-xl mb-4 md:mb-0">Ruby Paulson</div>
-            <div class="text-gray-500 text-sm text-center md:text-right">
-                © 2025 Ruby Paulson.
+        <!-- Stats Section -->
+        <section>
+            <div class="section-header reveal">
+                <h2>By The Numbers</h2>
             </div>
-        </div>
-    </footer>
+            
+            <div class="stats-grid">
+                <div class="stat-card reveal">
+                    <div class="stat-number">30%</div>
+                    <h4>Email Optimization</h4>
+                    <p>Reduction in non-priority internal communications at Lenovo through strategic messaging</p>
+                </div>
+                
+                <div class="stat-card reveal">
+                    <div class="stat-number">35+</div>
+                    <h4>Concurrent Clients</h4>
+                    <p>Simultaneous strategic accounts managed at ReachAll across diverse industry verticals</p>
+                </div>
+                
+                <div class="stat-card reveal">
+                    <div class="stat-number">14+</div>
+                    <h4>Years of Excellence</h4>
+                    <p>Proven track record delivering sustainable, ethical communications solutions</p>
+                </div>
+            </div>
+        </section>
 
-    <!-- Intersection Observer for Animations -->
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <h2>Let's Talk</h2>
+            <p>
+                Whether you need strategic communications work or you're interested in what I'm building with Ronin Toys, I'm always up for a conversation.
+            </p>
+            <div class="cta-buttons">
+                <a href="mailto:ruphilka@gmail.com" class="btn-primary">Get In Touch</a>
+                <a href="https://www.linkedin.com/in/rubypaulson" class="btn-secondary">
+                    LinkedIn Profile
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2025 Ruby Paulson. Built with care in Bangalore.</p>
+        </footer>
+    </div>
+
+    <!-- Full Ronin Toys Page -->
+    <div class="ronin-full" id="ronin-page">
+        <div class="ronin-content">
+            <a href="#home" onclick="showMainContent()" class="back-link">← Back to main page</a>
+            
+            <h2>Ronin Toys</h2>
+            <p class="subtitle">Current Work (September 2025–Present)</p>
+            
+            <p>I run Ronin Toys, where I design and manufacture cat toys. Right now that's the Reelin (a fishing-rod style toy) and Rattletail (a wand toy), both 3D-printed in PLA+ plastic. They're durable, they're fun, and cats lose their minds over them in the best possible way.</p>
+            
+            <p>This is what happens when you take years of designing narratives and experiences and apply it to making actual objects. At Byju's, I designed learning modules for 3-5 year olds—the whole brief was "make education feel like play." Turns out, designing play experiences for cats uses a lot of the same thinking: what holds attention, what creates joy, what makes you want to do it again.</p>
+            
+            <h3>Why This Works Right Now</h3>
+            
+            <p>India's toy market has opened up in interesting ways. There's space for small-batch, thoughtfully designed products that aren't just trying to be cheaper than everything else. Pet parents are investing in quality. And manufacturing—whether it's 3D printing, woodworking, or textile production—is more accessible than it's been before. You can actually <em>make things</em> without needing a factory or a pile of venture capital.</p>
+            
+            <p>I'm building something that's economically sustainable and built to last. Not trying to scale to the moon, just making good work that works.</p>
+            
+            <h3>The Wood Vision (And Why I'm Talking About It)</h3>
+            
+            <p>The Reelin is moving to wood—properly finished, properly made, the kind of object that lasts and doesn't end up in a landfill. Getting there means building a network of artisans: woodworkers and carpenters who know their craft and want to make things that matter.</p>
+            
+            <p>I'm working on building that network now. The model I'm aiming for puts at least 30% of profits directly to the artisans—not as charity, but as fair payment for skilled work. This only works if the economics work, which means figuring out pricing, distribution, and whether people will pay for wood toys when plastic is so much cheaper.</p>
+            
+            <p>That's the direction. I'm figuring it out as I go, which honestly makes it more interesting.</p>
+            
+            <h3>How I'm Building This</h3>
+            
+            <p>Right now, everything is self-funded and friend-powered. I've been learning 3D printing and manufacturing with support from Kailash at <a href="https://ampere.works/" style="color: var(--color-teal);">Ampere Works</a>, and friends have helped with web design, social media, and product development. The overhead is low, I'm doing as much as I can myself, and I'm treating this as a long-term build, not a sprint.</p>
+            
+            <p>I'm also prototyping other products—like the Ragdoll range, which will be made from upcycled, donated fabric—but those are still in development. For now, the focus is on getting the Reelin and Rattletail right, building the customer base, and establishing the artisan connections that will make the wood transition possible.</p>
+            
+            <h3>Why India, Why 2025</h3>
+            
+            <p>There's something happening in India right now around manufacturing, maker culture, and small-batch production. It's not just about cost anymore—people are willing to pay for quality, for thoughtful design, for things that last. The infrastructure is there: 3D printing services, woodworking communities, textile artisans, all accessible in ways they weren't even five years ago.</p>
+            
+            <p>And the pet market is growing. People care about what they're buying for their cats. They're looking for toys that aren't just cheap plastic nonsense imported from elsewhere. There's space for something local, well-made, and designed with care.</p>
+            
+            <p>This isn't about disrupting anything. It's about building something sustainable that values craft, fair work, and quality. It's optimistic about what's possible in India right now—not naive, just paying attention to what's actually happening on the ground.</p>
+            
+            <div class="ronin-cta">
+                <h4>What Would Help</h4>
+                
+                <p>I'm running this myself, and that's not changing. But there are specific things that would help this grow in the right direction:</p>
+                
+                <ul>
+                    <li><strong>Funding</strong> — Trusts, NGOs, grant programs, or people interested in supporting ethical manufacturing and maker networks. I'm not looking for equity investment; I'm looking for funding that understands infrastructure-building and public good. This is about building artisan networks and transitioning to sustainable materials, not about exits or scale.</li>
+                    
+                    <li><strong>Connections</strong> — Artisans working with wood or upcycled fabric. People who've built artisan networks before and can share what actually works. Anyone who knows how to structure small-batch manufacturing sustainably. I need practical knowledge from people who've done this, not just theories about how it might work.</li>
+                    
+                    <li><strong>Orders</strong> — If you have cats (or know people who do), the toys are <a href="https://ronintoys.com">here</a>. Word of mouth goes a long way. Every order helps prove the model, refine the products, and build toward the wood transition.</li>
+                </ul>
+                
+                <p style="margin-top: 1.5rem;">If any of that resonates with you—or if you just want to talk about what I'm building—reach out at <a href="mailto:ruphilka@gmail.com">ruphilka@gmail.com</a>. I'm always up for a good conversation.</p>
+            </div>
+            
+            <h3>How This Fits Together</h3>
+            
+            <p>I've spent years doing corporate work: internal communications for Lenovo, brand voice for Maersk and Sealand, social media strategy for Licious, narrative design for Byju's. I know how to manage campaigns, write for global audiences, and make complex things make sense. That work taught me a lot, and I'm good at it.</p>
+            
+            <p>Ronin Toys is me taking all of that—the strategy, the rigor, the storytelling—and building something I actually want to see in the world. It's not anti-corporate, it's just... parallel. A different way of working that doesn't feel like a compromise.</p>
+            
+            <p>This is about making things that matter: good toys, fair work, community networks. It's about taking 14 years of professional experience and using it to build something tangible, something that exists in the world and makes it slightly better.</p>
+            
+            <p>If that sounds interesting—as a collaborator, a supporter, or just someone curious about the process—let's talk.</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script>
+        // Page navigation
+        function showRoninPage(e) {
+            if (e) e.preventDefault();
+            document.querySelector('.main-content').classList.add('hidden');
+            document.getElementById('ronin-page').classList.add('active');
+            window.scrollTo(0, 0);
+        }
+        
+        function showMainContent() {
+            document.querySelector('.main-content').classList.remove('hidden');
+            document.getElementById('ronin-page').classList.remove('active');
+            window.scrollTo(0, 0);
+        }
+        
+        // Intersection Observer for reveal animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -358,11 +789,16 @@
             observer.observe(el);
         });
 
-        // Smooth scrolling for navigation links
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                
+                // Don't prevent default for Ronin link
+                if (href === '#ronin') return;
+                
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                const target = document.querySelector(href);
                 if (target) {
                     target.scrollIntoView({
                         behavior: 'smooth',
