@@ -415,6 +415,130 @@
             font-weight: bold;
         }
         
+        /* Selected Work Section */
+        .samples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .sample-card {
+            background: var(--color-bg-secondary);
+            padding: 2.5rem;
+            border-left: 4px solid var(--color-teal);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sample-tag {
+            color: var(--color-coral);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .sample-card h3 {
+            color: var(--color-yellow);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .sample-card p {
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+        }
+
+        .sample-card h4 {
+            color: var(--color-text-primary);
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        .sample-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .sample-card li {
+            color: var(--color-text-secondary);
+            margin-bottom: 0.5rem;
+            padding-left: 1.25rem;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .sample-card li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--color-coral);
+            font-weight: bold;
+        }
+
+        .sample-link {
+            margin-top: auto;
+            padding-top: 1.5rem;
+            color: var(--color-coral);
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .sample-link:hover {
+            color: var(--color-yellow-bright);
+        }
+
+        .testimonial {
+            margin: 4rem auto 0;
+            max-width: 850px;
+            padding: 3rem;
+            background: var(--color-bg-secondary);
+            border-left: 4px solid var(--color-coral);
+            position: relative;
+        }
+
+        .testimonial::before {
+            content: "\201C";
+            position: absolute;
+            top: -1.5rem;
+            left: 2rem;
+            font-family: var(--font-heading);
+            font-size: 6rem;
+            line-height: 1;
+            color: var(--color-coral);
+        }
+
+        .testimonial blockquote p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--color-text-primary);
+            font-style: italic;
+        }
+
+        .testimonial figcaption {
+            margin-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .testimonial figcaption strong {
+            color: var(--color-yellow);
+            font-family: var(--font-heading);
+        }
+
+        .testimonial figcaption span {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+        }
+
         /* Stats Section */
         .stats-grid {
             display: grid;
@@ -552,6 +676,15 @@
             .ronin-full {
                 padding: 10.5rem 1rem 4rem;
             }
+
+            .sample-card,
+            .testimonial {
+                padding: 2rem 1.5rem;
+            }
+
+            .testimonial blockquote p {
+                font-size: 1.05rem;
+            }
         }
     </style>
 </head>
@@ -655,6 +788,62 @@
                     <p>Developed training materials and managed content workflows via SharePoint.</p>
                 </div>
             </div>
+        </section>
+
+        <!-- Selected Work Section -->
+        <section id="samples">
+            <div class="section-header reveal">
+                <h2>Selected Work</h2>
+                <p>A closer look at what I did, and what changed because of it</p>
+            </div>
+
+            <div class="samples-grid">
+                <article class="sample-card reveal">
+                    <p class="sample-tag">AP Moller Maersk &amp; Sealand</p>
+                    <h3>Long-form Content Guidelines</h3>
+                    <p>Set standards for the different types of long-form content created in-house, to bring efficiency to the creation process.</p>
+                    <h4>Impact</h4>
+                    <ul>
+                        <li>New writers got a more comprehensive, yet shorter, onboarding.</li>
+                        <li>Briefs for long-form content answered more questions and carried more relevant talking points, so they stayed useful as future reference.</li>
+                        <li>Turnaround time for long-form content was significantly reduced.</li>
+                    </ul>
+                </article>
+
+                <article class="sample-card reveal">
+                    <p class="sample-tag">BlogVault</p>
+                    <h3>Crisis Communications</h3>
+                    <p>Handled crisis communications and PR, for both corporate stakeholders and customers, when the product was hacked and some users were exposed to the threat.</p>
+                    <h4>Impact</h4>
+                    <ul>
+                        <li>Retained customer and stakeholder trust through the crisis.</li>
+                    </ul>
+                    <a href="https://blogvault.net/security-notification/" class="sample-link" target="_blank" rel="noopener">Read the security notification →</a>
+                </article>
+
+                <article class="sample-card reveal">
+                    <p class="sample-tag">Maersk</p>
+                    <h3>Product Positioning &amp; Content: FlexHub</h3>
+                    <p>Responsible for product positioning, content and strategy for FlexHub, a service that gives Maersk customers flexibility with the least losses and downtime.</p>
+                    <a href="https://www.maersk.com/transportation-services/ocean-transport/flex-hub" class="sample-link" target="_blank" rel="noopener">See FlexHub →</a>
+                </article>
+
+                <article class="sample-card reveal">
+                    <p class="sample-tag">we45</p>
+                    <h3>Tech Blog Sample</h3>
+                    <p>Part of a campaign to inform we45's users about the brand's online software testing course and application.</p>
+                </article>
+            </div>
+
+            <figure class="testimonial reveal">
+                <blockquote>
+                    <p>I worked with Ruby on several marketing campaigns at Maersk. She does a lot of research before delivering the copy and has immense knowledge of various subjects. She's a great team player and fun to work with. She looks at every aspect of a concept in a unique way which is a great quality for a creative copywriter.</p>
+                </blockquote>
+                <figcaption>
+                    <strong>Pravallika Uppara</strong>
+                    <span>Deputy Director, Myntra · worked with Ruby at Maersk</span>
+                </figcaption>
+            </figure>
         </section>
 
         <!-- Stats Section -->
