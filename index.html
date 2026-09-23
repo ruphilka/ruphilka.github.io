@@ -6,28 +6,68 @@
     <title>Ruby Paulson - Strategist & Writer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/5ee19ef111.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,500..700,100&family=Didact+Gothic&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/brands.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/solid.min.css">
+    
+    <script>
+        // Apply the visitor's saved theme before the page paints
+        try {
+            if (localStorage.getItem('theme') === 'light') document.documentElement.dataset.theme = 'light';
+        } catch (e) {}
+    </script>
     
     <style>
+        /* Canopy & Marigold: Bengaluru's rain-tree canopy and flower-market marigold */
         :root {
-            --color-bg-main: #0d0d0d;
-            --color-bg-secondary: #1a1a1a;
-            --color-bg-tertiary: #242424;
+            --color-bg-main: #0f1a15;
+            --color-bg-secondary: #16241d;
             
-            --color-text-primary: #f5f1e8;
-            --color-text-secondary: #e4e0d5;
-            --color-text-muted: #cc4d4d;
+            --color-text-primary: #eaeee3;
+            --color-text-secondary: #c9d1c0;
+            --color-text-muted: #9aab8c;
             
-            --color-coral: #e75172;
-            --color-coral-bright: #cc4d4d;
-            --color-yellow: #876beb;
-            --color-yellow-bright: #E9C46A;
-            --color-teal: #aa75db;
-            --color-sage: #7d7ebb;
+            --color-accent: #eaa53a;
+            --color-accent-bright: #f3b95c;
+            --color-on-accent: #13201a;
+            --color-heading: #b8cf95;
+            --color-highlight: #f3c96b;
+            --color-moss: #7f9f5f;
             
-            --font-heading: 'Montserrat', sans-serif;
-            --font-body: 'Readex Pro', sans-serif;
+            --color-line: rgba(234, 238, 227, 0.12);
+            --color-rule: rgba(127, 159, 95, 0.5);
+            --color-nav-bg: rgba(15, 26, 21, 0.94);
+            --color-glow: rgba(234, 165, 58, 0.25);
+            
+            --font-heading: 'Fraunces', Georgia, serif;
+            --font-body: 'Century Gothic', CenturyGothic, AppleGothic, 'Didact Gothic', sans-serif;
+            
+            color-scheme: dark;
+        }
+        
+        /* Light theme: matches the resume (plum name, teal section headings, rose accents) */
+        :root[data-theme="light"] {
+            --color-bg-main: #fdfcfb;
+            --color-bg-secondary: #f5f0ef;
+            
+            --color-text-primary: #2b2427;
+            --color-text-secondary: #4f4549;
+            --color-text-muted: #6e6468;
+            
+            --color-accent: #7a1f4b;
+            --color-accent-bright: #922a5c;
+            --color-on-accent: #ffffff;
+            --color-heading: #3a6f7e;
+            --color-highlight: #a3456c;
+            --color-moss: #a3456c;
+            
+            --color-line: rgba(43, 36, 39, 0.12);
+            --color-rule: rgba(58, 111, 126, 0.45);
+            --color-nav-bg: rgba(253, 252, 251, 0.94);
+            --color-glow: rgba(122, 31, 75, 0.2);
+            
+            color-scheme: light;
         }
         
         * {
@@ -38,6 +78,7 @@
         
         body {
             font-family: var(--font-body);
+            font-variation-settings: "SOFT" 100;
             background: var(--color-bg-main);
             color: var(--color-text-primary);
             line-height: 1.7;
@@ -56,9 +97,9 @@
             top: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(13, 13, 13, 0.95);
+            background: var(--color-nav-bg);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(231, 111, 81, 0.2);
+            border-bottom: 1px solid var(--color-line);
         }
         
         .nav-container {
@@ -74,7 +115,11 @@
             font-family: var(--font-heading);
             font-weight: 800;
             font-size: 1.25rem;
-            color: var(--color-yellow);
+            color: var(--color-heading);
+        }
+        
+        :root[data-theme="light"] .nav-logo {
+            color: var(--color-accent);
         }
         
         .nav-links {
@@ -91,16 +136,58 @@
         }
         
         .nav-links a:hover {
-            color: var(--color-coral);
+            color: var(--color-accent);
+        }
+        
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--color-line);
+            color: var(--color-text-primary);
+            width: 2.5rem;
+            height: 2.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: color 0.3s ease, border-color 0.3s ease;
+        }
+        
+        .theme-toggle:hover {
+            color: var(--color-accent);
+            border-color: var(--color-accent);
+        }
+        
+        .theme-toggle svg {
+            width: 1.15rem;
+            height: 1.15rem;
+        }
+        
+        .theme-toggle .icon-moon,
+        :root[data-theme="light"] .theme-toggle .icon-sun {
+            display: none;
+        }
+        
+        :root[data-theme="light"] .theme-toggle .icon-moon {
+            display: block;
+        }
+        
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+        
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 3px;
         }
         
         /* Hero Section */
         .hero {
-            min-height: 100vh;
             display: flex;
-            align-items: center;
             justify-content: center;
-            padding: 2rem 2rem 2rem;
+            padding: 11rem 2rem 3rem;
             text-align: center;
         }
         
@@ -115,13 +202,12 @@
         }
         
         .hero .highlight {
-            color: var(--color-coral);
+            color: var(--color-accent);
         }
         
         .hero-subtitle {
             font-size: clamp(1.1rem, 2.5vw, 1.5rem);
             color: var(--color-text-secondary);
-            margin-bottom: 2.5rem;
             font-weight: 400;
             animation: fadeInUp 0.8s ease-out 0.2s both;
         }
@@ -135,24 +221,24 @@
         }
         
         .btn-primary {
-            background: var(--color-coral);
-            color: var(--color-text-primary);
+            background: var(--color-accent);
+            color: var(--color-on-accent);
             padding: 1rem 2.5rem;
             text-decoration: none;
             font-weight: 600;
             font-family: var(--font-heading);
             transition: all 0.3s ease;
-            border: 2px solid var(--color-coral);
+            border: 2px solid var(--color-accent);
         }
         
         .btn-primary:hover {
-            background: var(--color-coral-bright);
+            background: var(--color-accent-bright);
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(231, 111, 81, 0.3);
+            box-shadow: 0 10px 30px var(--color-glow);
         }
         
         .btn-secondary {
-            color: var(--color-yellow);
+            color: var(--color-heading);
             text-decoration: none;
             font-weight: 500;
             display: flex;
@@ -162,7 +248,7 @@
         }
         
         .btn-secondary:hover {
-            color: var(--color-yellow-bright);
+            color: var(--color-highlight);
         }
         
         /* Section Styling */
@@ -180,7 +266,7 @@
         .section-header h2 {
             font-size: clamp(2rem, 5vw, 3.5rem);
             margin-bottom: 1rem;
-            color: var(--color-yellow);
+            color: var(--color-heading);
         }
         
         .section-header p {
@@ -205,12 +291,12 @@
         
         .current-work-box {
             background: var(--color-bg-secondary);
-            border-left: 4px solid var(--color-teal);
+            border-left: 4px solid var(--color-moss);
             padding: 3rem;
         }
         
         .current-work-box h2 {
-            color: var(--color-teal);
+            color: var(--color-moss);
             font-size: 2.5rem;
             margin-bottom: 1rem;
             text-align: center;
@@ -260,7 +346,7 @@
         }
         
         .ronin-content h2 {
-            color: var(--color-teal);
+            color: var(--color-moss);
             font-size: 3rem;
             margin-bottom: 0.5rem;
         }
@@ -273,7 +359,7 @@
         }
         
         .ronin-content h3 {
-            color: var(--color-coral);
+            color: var(--color-accent);
             margin-top: 3rem;
             margin-bottom: 1rem;
             font-size: 1.75rem;
@@ -287,7 +373,7 @@
         }
         
         .ronin-content em {
-            color: var(--color-yellow);
+            color: var(--color-heading);
             font-style: italic;
         }
         
@@ -295,11 +381,11 @@
             margin-top: 3rem;
             padding: 2.5rem;
             background: var(--color-bg-secondary);
-            border-left: 4px solid var(--color-coral);
+            border-left: 4px solid var(--color-accent);
         }
         
         .ronin-cta h4 {
-            color: var(--color-yellow);
+            color: var(--color-heading);
             margin-bottom: 1.5rem;
             font-size: 1.5rem;
         }
@@ -320,18 +406,18 @@
             content: "→";
             position: absolute;
             left: 0;
-            color: var(--color-coral);
+            color: var(--color-accent);
             font-weight: bold;
             font-size: 1.25rem;
         }
         
         .ronin-cta strong {
-            color: var(--color-coral);
+            color: var(--color-accent);
             font-weight: 600;
         }
         
         .ronin-cta a {
-            color: var(--color-teal);
+            color: var(--color-moss);
             text-decoration: underline;
         }
         
@@ -345,7 +431,7 @@
         }
         
         .back-link:hover {
-            color: var(--color-coral);
+            color: var(--color-accent);
         }
         
         /* Page CTA */
@@ -374,18 +460,13 @@
         .work-card {
             background: var(--color-bg-secondary);
             padding: 2rem;
-            border: 1px solid rgba(231, 111, 81, 0.2);
+            border: 1px solid var(--color-line);
             transition: all 0.3s ease;
         }
         
         /* Match By The Numbers hover animation */
-        .work-card:hover {
-            border-color: #E9C46A;
-            transform: translateY(-5px);
-        }
-        
         .work-card h3 {
-            color: var(--color-yellow);
+            color: var(--color-heading);
             margin-bottom: 0.5rem;
             font-size: 1.5rem;
         }
@@ -398,7 +479,7 @@
         }
         
         .work-card .role {
-            color: var(--color-coral);
+            color: var(--color-accent);
             font-size: 0.95rem;
             margin-bottom: 1rem;
             font-weight: 600;
@@ -428,7 +509,7 @@
             content: "•";
             position: absolute;
             left: 0;
-            color: var(--color-coral);
+            color: var(--color-accent);
             font-weight: bold;
         }
         
@@ -443,13 +524,13 @@
         .sample-card {
             background: var(--color-bg-secondary);
             padding: 2.5rem;
-            border-left: 4px solid var(--color-teal);
+            border-left: 4px solid var(--color-moss);
             display: flex;
             flex-direction: column;
         }
 
         .sample-tag {
-            color: var(--color-coral);
+            color: var(--color-accent);
             font-family: var(--font-heading);
             font-weight: 700;
             font-size: 0.8rem;
@@ -459,7 +540,7 @@
         }
 
         .sample-card h3 {
-            color: var(--color-yellow);
+            color: var(--color-heading);
             font-size: 1.5rem;
             margin-bottom: 1rem;
         }
@@ -494,14 +575,14 @@
             content: "→";
             position: absolute;
             left: 0;
-            color: var(--color-coral);
+            color: var(--color-accent);
             font-weight: bold;
         }
 
         .sample-link {
             margin-top: auto;
             padding-top: 1.5rem;
-            color: var(--color-coral);
+            color: var(--color-accent);
             font-family: var(--font-heading);
             font-weight: 600;
             font-size: 0.95rem;
@@ -510,7 +591,7 @@
         }
 
         .sample-link:hover {
-            color: var(--color-yellow-bright);
+            color: var(--color-highlight);
         }
 
         .testimonial {
@@ -518,7 +599,7 @@
             max-width: 850px;
             padding: 3rem;
             background: var(--color-bg-secondary);
-            border-left: 4px solid var(--color-coral);
+            border-left: 4px solid var(--color-accent);
             position: relative;
         }
 
@@ -530,7 +611,7 @@
             font-family: var(--font-heading);
             font-size: 6rem;
             line-height: 1;
-            color: var(--color-coral);
+            color: var(--color-accent);
         }
 
         .testimonial blockquote p {
@@ -547,7 +628,7 @@
         }
 
         .testimonial figcaption strong {
-            color: var(--color-yellow);
+            color: var(--color-heading);
             font-family: var(--font-heading);
         }
 
@@ -568,23 +649,15 @@
             background: var(--color-bg-secondary);
             padding: 2.5rem;
             text-align: center;
-            border: 1px solid rgba(244, 162, 97, 0.2);
+            border: 1px solid var(--color-line);
             transition: all 0.3s ease;
-        }
-        
-        .stat-card:hover {
-            border-color: var(--color-yellow);
-            transform: translateY(-5px);
         }
         
         .stat-number {
             font-size: 3.5rem;
             font-weight: 900;
             font-family: var(--font-heading);
-            background: linear-gradient(135deg, var(--color-coral), var(--color-yellow));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--color-accent);
             margin-bottom: 1rem;
         }
         
@@ -616,7 +689,7 @@
             left: 0.55rem;
             right: 0.55rem;
             height: 2px;
-            background: linear-gradient(90deg, var(--color-teal), var(--color-coral));
+            background: var(--color-rule);
         }
 
         .growth-strip li {
@@ -633,17 +706,17 @@
             height: 1.1rem;
             border-radius: 50%;
             background: var(--color-bg-main);
-            border: 2px solid var(--color-teal);
+            border: 2px solid var(--color-moss);
         }
 
         .growth-strip li:last-child::before {
-            background: var(--color-coral);
-            border-color: var(--color-coral);
+            background: var(--color-accent);
+            border-color: var(--color-accent);
         }
 
         .growth-years {
             display: block;
-            color: var(--color-coral);
+            color: var(--color-accent);
             font-family: var(--font-heading);
             font-weight: 700;
             font-size: 0.9rem;
@@ -673,7 +746,7 @@
         }
 
         .timeline-content > h2 {
-            color: var(--color-teal);
+            color: var(--color-moss);
             font-size: 3rem;
             margin-bottom: 0.5rem;
         }
@@ -697,7 +770,7 @@
         }
 
         .tl-phase-header h3 {
-            color: var(--color-coral);
+            color: var(--color-accent);
             font-size: 1.6rem;
         }
 
@@ -710,7 +783,7 @@
 
         .tl-list {
             list-style: none;
-            border-left: 2px solid rgba(170, 117, 219, 0.4);
+            border-left: 2px solid var(--color-rule);
             margin-left: 0.5rem;
             padding-left: 2rem;
             padding-bottom: 1.5rem;
@@ -734,7 +807,7 @@
             height: 12px;
             border-radius: 50%;
             background: var(--color-bg-main);
-            border: 2px solid var(--color-teal);
+            border: 2px solid var(--color-moss);
         }
 
         .tl-item .tl-date {
@@ -745,13 +818,13 @@
         }
 
         .tl-item h4 {
-            color: var(--color-yellow);
+            color: var(--color-heading);
             font-size: 1.3rem;
             margin: 0.25rem 0 0.15rem;
         }
 
         .tl-item .tl-org {
-            color: var(--color-coral);
+            color: var(--color-accent);
             font-weight: 600;
             font-size: 0.95rem;
             margin-bottom: 0.6rem;
@@ -779,27 +852,27 @@
             content: "•";
             position: absolute;
             left: 0;
-            color: var(--color-coral);
+            color: var(--color-accent);
             font-weight: bold;
         }
 
         .tl-item.tl-now {
             background: var(--color-bg-secondary);
-            border-left: 4px solid var(--color-coral);
+            border-left: 4px solid var(--color-accent);
             padding: 1.75rem 2rem;
         }
 
         .tl-item.tl-now::before {
             left: calc(-2rem - 13px);
             top: 2rem;
-            background: var(--color-coral);
-            border-color: var(--color-coral);
+            background: var(--color-accent);
+            border-color: var(--color-accent);
         }
 
         .tl-link {
             display: inline-block;
             margin-top: 1rem;
-            color: var(--color-coral);
+            color: var(--color-accent);
             font-family: var(--font-heading);
             font-weight: 600;
             text-decoration: none;
@@ -807,7 +880,7 @@
         }
 
         .tl-link:hover {
-            color: var(--color-yellow-bright);
+            color: var(--color-highlight);
         }
 
         /* Contact Section */
@@ -820,7 +893,7 @@
         .contact-section h2 {
             font-size: clamp(2rem, 5vw, 3rem);
             margin-bottom: 1.5rem;
-            color: var(--color-yellow);
+            color: var(--color-heading);
         }
         
         .contact-section p {
@@ -837,7 +910,7 @@
             text-align: center;
             padding: 3rem 2rem;
             color: var(--color-text-muted);
-            border-top: 1px solid rgba(231, 111, 81, 0.2);
+            border-top: 1px solid var(--color-line);
         }
         
         /* Utility Classes */
@@ -892,6 +965,17 @@
                 flex-direction: column;
                 gap: 0.75rem;
                 padding: 1rem;
+                position: relative;
+            }
+            
+            .nav-actions {
+                gap: 0;
+            }
+            
+            .theme-toggle {
+                position: absolute;
+                top: 0.75rem;
+                right: 1rem;
             }
 
             .nav-links {
@@ -924,7 +1008,7 @@
                 right: auto;
                 width: 2px;
                 height: auto;
-                background: linear-gradient(180deg, var(--color-teal), var(--color-coral));
+                background: var(--color-rule);
             }
 
             .growth-strip li {
@@ -966,10 +1050,16 @@
     <nav>
         <div class="nav-container">
             <div class="nav-logo">Ruby Paulson</div>
-            <ul class="nav-links">
-                <li><a href="#work">All Things Work</a></li>
-                <li><a href="#ronin" onclick="showRoninPage(event)">Taking Play Seriously</a></li>
-            </ul>
+            <div class="nav-actions">
+                <ul class="nav-links">
+                    <li><a href="#work">All Things Work</a></li>
+                    <li><a href="#ronin" onclick="showRoninPage(event)">Taking Play Seriously</a></li>
+                </ul>
+                <button class="theme-toggle" type="button" aria-label="Switch to light theme" onclick="toggleTheme()">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -1195,8 +1285,9 @@
             <div class="cta-buttons">
                 <a href="mailto:ruphilka@gmail.com" class="btn-primary">Get In Touch</a>
                 <a href="https://www.linkedin.com/in/rubypaulson" class="btn-secondary">
+                    <i class="fab fa-linkedin" aria-hidden="true"></i>
                     LinkedIn Profile
-                    <i class="fas fa-arrow-right"></i>
+                    <i class="fas fa-arrow-right" aria-hidden="true"></i>
                 </a>
             </div>
         </section>
@@ -1235,7 +1326,7 @@
             
             <h3>How I'm Building This</h3>
             
-            <p>Right now, everything is self-funded and friend-powered. I've been learning 3D printing with support from Kailash at <a href="https://ampere.works/" style="color: var(--color-teal);">Ampere Works</a>, and other friends have helped with web design, marketing, and more. The overhead is low and I'm doing as much as I can myself.</p>
+            <p>Right now, everything is self-funded and friend-powered. I've been learning 3D printing with support from Kailash at <a href="https://ampere.works/" style="color: var(--color-moss);">Ampere Works</a>, and other friends have helped with web design, marketing, and more. The overhead is low and I'm doing as much as I can myself.</p>
             
             <div class="ronin-cta">
                 <h4>What Would Help</h4>
@@ -1259,7 +1350,7 @@
             <a href="#home" onclick="showMainContent()" class="back-link">← Back to All Things Work</a>
 
             <h2>Timeline of Growth</h2>
-            <p class="subtitle">14+ years of making complicated things clear, from software manuals to the way a whole organisation talks to itself.</p>
+            <p class="subtitle">14+ years of making complicated things clear, from software manuals to the way an organisation speaks.</p>
 
             <div class="tl-phase">
                 <div class="tl-phase-header">
@@ -1419,6 +1510,27 @@
 
     <!-- Scripts -->
     <script>
+        // Light/dark theme toggle
+        const themeToggle = document.querySelector('.theme-toggle');
+        
+        function updateThemeLabel() {
+            const isLight = document.documentElement.dataset.theme === 'light';
+            themeToggle.setAttribute('aria-label', isLight ? 'Switch to dark theme' : 'Switch to light theme');
+        }
+        
+        function toggleTheme() {
+            const root = document.documentElement;
+            if (root.dataset.theme === 'light') {
+                delete root.dataset.theme;
+            } else {
+                root.dataset.theme = 'light';
+            }
+            try { localStorage.setItem('theme', root.dataset.theme || 'dark'); } catch (e) {}
+            updateThemeLabel();
+        }
+        
+        updateThemeLabel();
+        
         // Page navigation
         const subpages = {
             '#ronin': 'ronin-page',
