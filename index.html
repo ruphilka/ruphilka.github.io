@@ -1294,7 +1294,7 @@
 
         <!-- Footer -->
         <footer>
-            <p>© 2025 Ruby Paulson. Built with care in Bangalore.</p>
+            <p>© <span id="current-year">2026</span> Ruby Paulson. Built with care in Bangalore.</p>
         </footer>
     </div>
 
@@ -1510,6 +1510,9 @@
 
     <!-- Scripts -->
     <script>
+        // Keep the footer copyright year current
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
         // Light/dark theme toggle
         const themeToggle = document.querySelector('.theme-toggle');
         
