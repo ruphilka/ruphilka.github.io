@@ -535,6 +535,23 @@
             .current-work-box {
                 padding: 2rem;
             }
+
+            .nav-container {
+                flex-direction: column;
+                gap: 0.75rem;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+                font-size: 0.9rem;
+            }
+
+            .ronin-full {
+                padding: 10.5rem 1rem 4rem;
+            }
         }
     </style>
 </head>
@@ -743,18 +760,42 @@
     <!-- Scripts -->
     <script>
         // Page navigation
+        const subpages = {
+            '#ronin': 'ronin-page'
+        };
+
+        function showSubpage(hash) {
+            document.querySelector('.main-content').classList.add('hidden');
+            Object.values(subpages).forEach(id => document.getElementById(id).classList.remove('active'));
+            document.getElementById(subpages[hash]).classList.add('active');
+            if (location.hash !== hash) history.pushState(null, '', hash);
+            window.scrollTo(0, 0);
+        }
+
         function showRoninPage(e) {
             if (e) e.preventDefault();
-            document.querySelector('.main-content').classList.add('hidden');
-            document.getElementById('ronin-page').classList.add('active');
-            window.scrollTo(0, 0);
+            showSubpage('#ronin');
         }
-        
+
         function showMainContent() {
             document.querySelector('.main-content').classList.remove('hidden');
-            document.getElementById('ronin-page').classList.remove('active');
+            Object.values(subpages).forEach(id => document.getElementById(id).classList.remove('active'));
+            if (subpages[location.hash]) history.pushState(null, '', location.pathname);
             window.scrollTo(0, 0);
         }
+
+        // Open a subpage directly from a shared link (e.g. /#ronin), and handle browser back/forward
+        function routeFromHash() {
+            if (subpages[location.hash]) {
+                showSubpage(location.hash);
+            } else {
+                document.querySelector('.main-content').classList.remove('hidden');
+                Object.values(subpages).forEach(id => document.getElementById(id).classList.remove('active'));
+            }
+        }
+
+        window.addEventListener('popstate', routeFromHash);
+        routeFromHash();
         
         // Intersection Observer for reveal animations
         const observerOptions = {
@@ -779,8 +820,8 @@
             anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
                 
-                // Don't prevent default for Ronin link
-                if (href === '#ronin') return;
+                // Subpage links handle their own navigation
+                if (subpages[href]) return;
                 
                 e.preventDefault();
                 const target = document.querySelector(href);
